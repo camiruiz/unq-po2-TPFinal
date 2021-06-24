@@ -1,0 +1,14 @@
+POLITICAS DE CANCELACION
+
+1. El propietario debe tener un mensaje para elegir el tipo de cancelacion que quiere?
+2. Hicimos que el propietario elije un metedo de pago en particular. Que pasa si quiero que una publicacion de el sea de una forma de pago, y otra publicacion otra, de esta manera no puedo.
+
+
+ADMINISTRACION DE RESERVAS PARA INQUILINOS
+
+1. El inquilino debe poder cancelar sus reservas enviando un email, codeo el mail?
+
+NOTIFICACIONES:
+
+1. Tengo que implementar un observer que se fije cuando hay una oferta, y se lo notifique a Trivago. Como hago esto?
+2. Como no tengo clases concretas, y tengo interfaces unicamente, como hago que ambos implementen la misma interfaz observer (Una interfaz no puede implementar otra interfaz)

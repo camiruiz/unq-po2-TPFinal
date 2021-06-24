@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
-public class Inmueble extends Publicacion {
+public class Inmueble{
 	private String tipoInmueble;
 	private String superficie;
 	private String pais;
 	private String ciudad;
 	private String direccion;
 	private ArrayList<String> servicios;
-	private int capacidad;
+	private Integer capacidad;
 	
 	public Inmueble(String tipoInmueble,
 					String superficie, 
@@ -15,15 +15,15 @@ public class Inmueble extends Publicacion {
 					String ciudad,
 					String direccion, 
 					ArrayList<String> servicios, 
-					int capacidad) {
+					Integer capacidad) {
 		
 		this.tipoInmueble = tipoInmueble;
 		this.superficie = superficie;
 		this.pais = pais;
 		this.ciudad = ciudad;
 		this.direccion = direccion;
-		this.servicios = new ArrayList<String>;
-		this capacidad = capacidad;
+		this.servicios = new ArrayList<String>();
+		this.capacidad = capacidad;
 		
 	}
 	

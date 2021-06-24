@@ -3,8 +3,9 @@ package src;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
-import com.sun.tools.javac.util.List;
+
 
 public class Publicacion implements iPuntuable{
 
@@ -20,34 +21,40 @@ public class Publicacion implements iPuntuable{
 	private EstadoDeCancelacion politicaDeCancelacion;
 	private List<TemporadaAlta> diasEnAumento;
 	
-	public Publicacion(	LocalDate fechaInicio, LocalDate fechaFin, 
-						LocalTime horarioDeCheckIn, LocalTime horarioDeCheckOut, 
-						Double precio, Inmueble miInmueble, Propietario miPropietario,
-						Notificador miNotificador, EstadoDeCancelacion politicaDeCancel,
-						CalculadorDeCalificaciones miCalculadorDeCalificaciones) 
-	{
+	public Publicacion(	LocalDate fechaInicio, 
+						LocalDate fechaFin, 
+						LocalTime horarioDeCheckIn, 
+						LocalTime horarioDeCheckOut, 
+						Double precio, 
+						Inmueble miInmueble, 
+						Propietario miPropietario,
+						Notificador miNotificador, 
+						EstadoDeCancelacion politicaDeCancel,
+						CalculadorDeCalificaciones miCalculadorDeCalificaciones) {
 		super();
-		reservas = new ArrayList<Reserva>();
-		diasDisponibles = this.crearListaDeDiasDisponibles(fechaInicio, fechaFin);
-		diasEnAumento = new ArrayList<TemporadaAlta>();
-		checkInHorario = horarioDeCheckIn;
-		checkOutHorario = horarioDeCheckOut;
-		precioPorDia = precio;
-		inmueble = miInmueble;
-		propietario = miPropietario;
-		notificador = miNotificador;
-		politicaDeCancelacion = politicaDeCancel;
-		calculadorDeCalificaciones = miCalculadorDeCalificaciones;
+		this.reservas = new ArrayList<Reserva>();
+		this.diasDisponibles = crearListaDeDias(fechaInicio, fechaFin);
+		this.diasEnAumento = new ArrayList<TemporadaAlta>();
+		this.checkInHorario = horarioDeCheckIn;
+		this.checkOutHorario = horarioDeCheckOut;
+		this.precioPorDia = precio;
+		this.inmueble = miInmueble;
+		this.propietario = miPropietario;
+		this.notificador = miNotificador;
+		this.politicaDeCancelacion = politicaDeCancel;
+		this.calculadorDeCalificaciones = miCalculadorDeCalificaciones;
 	}
 
-	private List<LocalDate> crearListaDeDiasDisponibles(LocalDate fechaInicio, LocalDate fechaFin) {
+	private List<LocalDate> crearListaDeDias(LocalDate fechaInicio, LocalDate fechaFin) {
 		
-		LocalDate fechaActual = fechaInicio;
+		LocalDate fechaActual 	= fechaInicio;
+		List<LocalDate> listaDeDias= new ArrayList<LocalDate>();
 		
 		while(!fechaActual.equals(fechaFin)) {
-			diasDisponibles.add(fechaActual);
+			listaDeDias.add(fechaActual);
 			fechaActual = fechaActual.plusDays(1);
 		}
+		return(listaDeDias);
 	}
 	
 	public void aumentarPrecioEnPeriodo(LocalDate fechaDeInicio, LocalDate fechaDeFin, Double aumento) {
@@ -100,15 +107,33 @@ public class Publicacion implements iPuntuable{
 	}
 
 	public List<LocalDate> getDiasDisponibles() {
-		return diasDisponibles;
+		return this.diasDisponibles;
 	}
 
 	public Inmueble getInmueble() {
-		return inmueble;
+		return this.inmueble;
 	}
 
 	public void setPoliticaDeCancelacion(EstadoDeCancelacion politicaDeCancelacion) {
 		this.politicaDeCancelacion = politicaDeCancelacion;
 	}
-	
+
+	public Propietario getPropietario() {
+		return this.propietario;
+	}
+
+	public Integer getCapacidad() {
+		return this.inmueble.getCapacidad();
+	}
+
+	public String getCiudad() {
+		return this.inmueble.getCiudad();
+	}
+
+	public Boolean checkDisponibilidadEntre(LocalDate fechaInicio, LocalDate fechaFin) {
+		List<LocalDate> listaDeDias = crearListaDeDias(fechaInicio, fechaFin);
+		
+		return diasDisponibles.contains(listaDeDias);
+	}
+
 }

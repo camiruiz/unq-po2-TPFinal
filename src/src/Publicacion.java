@@ -62,11 +62,7 @@ public class Publicacion implements iPuntuable{
 	}
 	
 	public float getPuntaje() {
-		return(this.calculadorDeCalificaciones.getPromedio());
-	}
-	
-	public float setPuntaje(String, Integer) {
-		return(this.calculadorDeCalificaciones.setPuntaje(String, Integer));
+		return(this.calculadorDeCalificaciones.calcularPromedio());
 	}
 	
 	public void recibirReserva(Reserva reserva) {

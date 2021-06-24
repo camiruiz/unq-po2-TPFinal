@@ -2,7 +2,7 @@ package src;
 
 public interface iPuntuable  {
 
-	public float setPuntaje();
+	public void setPuntaje();
 	
 	public float getPuntaje();
 }

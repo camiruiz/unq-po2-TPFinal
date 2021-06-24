@@ -2,7 +2,7 @@ package src;
 
 import java.time.LocalDate;
 
-public class UsuarioInquilino {
+public class UsuarioInquilino implements iPuntuable {
 
 		private String nombreCompleto;
 		private String email;

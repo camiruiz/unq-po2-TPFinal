@@ -5,3 +5,17 @@
 /Propietario.class
 /Publicacion.class
 /UsuarioInquilino.class
+/CancelacionBasica.class
+/CancelacionIntermedia.class
+/Capacidad.class
+/Ciudad.class
+/Disponibilidad.class
+/Filtro.class
+/PoliticaDeCancelacionDeReserva.class
+/PrecioMax.class
+/PrecioMin.class
+/Reserva.class
+/SinCancelacion.class
+/Solicitud.class
+/iPuntuable.class
+/prueba.class

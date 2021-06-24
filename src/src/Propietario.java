@@ -1,4 +1,4 @@
-package tpFinal_JAVASTA;
+package src;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,7 @@ public class Propietario extends UsuarioInquilino {
 	private String telefono;
 	private CalculadorDeCalificaciones calculadorDeCalificacionesDueño;
 	private List<String> metodosDePago;
+	private List<Solicitud> solicitudes;
 
 	// Constructor
 	public Propietario(String nombreCompleto, String email, String telefono, CalculadorDeCalificaciones calculadorDeCalificacionesDueño, List<String> metodosDePago) {
@@ -56,6 +57,16 @@ public class Propietario extends UsuarioInquilino {
 
 	public void setCalculadorDeCalificacionesDueño(CalculadorDeCalificaciones calculadorDeCalificacionesDueño) {
 		this.calculadorDeCalificacionesDueño = calculadorDeCalificacionesDueño;
+	}
+
+	public void sacarSolicitud(Solicitud solicitud) {
+		this.solicitudes.remove(solicitud);
+		
+	}
+
+	public void recibirSolicitud(Solicitud solicitud) {
+		this.solicitudes.add(solicitud);
+		
 	}
 
 	

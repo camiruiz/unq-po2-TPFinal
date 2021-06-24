@@ -1,4 +1,6 @@
-package tpFinal_JAVASTA;
+package src;
+
+import java.time.LocalDate;
 
 public class UsuarioInquilino {
 
@@ -57,8 +59,9 @@ public class UsuarioInquilino {
 			calculadorDeCalificaciones.agregarPuntaje(categoria, calificacion);
 		}
 		
-		public float solicitarReserva(Publicacion publicacion, LocalDate fechaInicio, LocalDate fechaFin, MetodoDePago metodoDePago) {
-			//Esto es tarea de iñaki xd Gorreado.
+		public void solicitarReserva(Publicacion publicacion, LocalDate fechaInicio, LocalDate fechaFin, String metodoDePago) {
+			Solicitud solicitud = new Solicitud(this, fechaInicio, fechaFin, metodoDePago, publicacion);
+			publicacion.getPropietario().recibirSolicitud(solicitud);
 		}
 		
 	

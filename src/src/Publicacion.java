@@ -58,7 +58,7 @@ public class Publicacion implements iPuntuable{
 	}
 	
 	public void aumentarPrecioEnPeriodo(LocalDate fechaDeInicio, LocalDate fechaDeFin, Double aumento) {
-		diasEnAumento.add(new TemporadaAlta(fechaDeInicio, fechaDeFin, aumento));
+		this.diasEnAumento.add(new TemporadaAlta(fechaDeInicio, fechaDeFin, aumento));
 	}
 	
 	public float getPuntaje() {

@@ -1,4 +1,4 @@
-package tpFinal_JAVASTA;
+package src;
 
 public class Calificacion {
 	

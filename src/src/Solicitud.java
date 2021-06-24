@@ -2,7 +2,6 @@ package src;
 
 import java.time.LocalDate;
 
-import Reserva;
 
 public class Solicitud {
 	
@@ -35,7 +34,7 @@ public class Solicitud {
 		return (new Reserva(this.inquilino,
 							this.fechaInicio, 
 							this.fechaFin, 
-							this.metodoDePago);
+							this.metodoDePago));
 	}
 
 	private void darReservaALaPublicacion(Reserva reserva) {

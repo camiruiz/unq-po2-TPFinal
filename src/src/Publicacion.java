@@ -135,5 +135,10 @@ public class Publicacion implements iPuntuable{
 		
 		return diasDisponibles.contains(listaDeDias);
 	}
+	
+	
+	public void setPuntaje(String categoria, Integer calificacion) {
+		calculadorDeCalificaciones.agregarPuntaje(categoria, calificacion);
+	}
 
 }

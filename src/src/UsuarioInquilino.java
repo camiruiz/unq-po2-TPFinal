@@ -60,7 +60,6 @@ public class UsuarioInquilino {
 		}
 		
 		public void solicitarReserva(Publicacion publicacion, LocalDate fechaInicio, LocalDate fechaFin, String metodoDePago) {
-			//Esto es tarea de iñaki xd Gorreado.
 			Solicitud solicitud = new Solicitud(this, fechaInicio, fechaFin, metodoDePago, publicacion);
 			publicacion.getPropietario().recibirSolicitud(solicitud);
 		}

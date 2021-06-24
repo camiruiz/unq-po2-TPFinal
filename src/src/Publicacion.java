@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import com.sun.tools.javac.util.List;
 
-public class Publicacion {
+public class Publicacion implements iPuntuable{
 
 	private LocalTime checkInHorario;
 	private LocalTime checkOutHorario;

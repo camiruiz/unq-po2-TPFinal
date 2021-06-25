@@ -6,13 +6,9 @@ public class SinCancelacion extends PoliticaDeCancelacionDeReserva {
 		//los días que había reservado.
 		
 		@Override 
-		public getMontoParaReserva(Reserva reserva, Publicacion publicacion) {
+		public float getMontoParaReserva(Reserva reserva) {
 			
 			return reserva.getPrecioTotal(); 
-			
-			//hacer get precio total en reserva entre fecha inicio y fin
-			//long diasTotalesDeReserva = ChronoUnit.DAYS.between(reserva.fechaInicio(), reserva.fechaFin());
-			//x el precioxdia de la publicacion=total
 
 		}
 } 

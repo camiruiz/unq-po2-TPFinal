@@ -57,6 +57,14 @@ public class Publicacion implements iPuntuable{
 		return(listaDeDias);
 	}
 	
+	public List<Reserva> getReservas() {
+		return reservas;
+	}
+
+	public void setReservas(List<Reserva> reservas) {
+		this.reservas = reservas;
+	}
+
 	public void aumentarPrecioEnPeriodo(LocalDate fechaDeInicio, LocalDate fechaDeFin, Double aumento) {
 		this.diasEnAumento.add(new TemporadaAlta(fechaDeInicio, fechaDeFin, aumento));
 	}
@@ -135,6 +143,15 @@ public class Publicacion implements iPuntuable{
 	
 	public void setPuntaje(String categoria, Integer calificacion) {
 		calculadorDeCalificaciones.agregarPuntaje(categoria, calificacion);
+	}
+
+	public Boolean chequearSiElUsuarioTieneReserva(UsuarioInquilino usuario) {
+		return ( this.getReservas().stream().anyMatch(r -> r.compararInquilino(usuario)));
+	}
+
+	public Boolean chequearCiudad(String ciudad) {
+		return this.inmueble.getCiudad().equals(ciudad);
+		
 	}
 
 }

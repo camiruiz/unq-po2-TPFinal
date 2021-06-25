@@ -63,6 +63,10 @@ public class UsuarioInquilino implements iPuntuable {
 			Solicitud solicitud = new Solicitud(this, fechaInicio, fechaFin, metodoDePago, publicacion); //rompe openclose
 			publicacion.getPropietario().recibirSolicitud(solicitud); //rompe encap
 		}
+
+		public int vecesQueFueInquilino() {
+			return 0;
+		}
 		
 	
 	

@@ -9,14 +9,14 @@ public class Reserva {
 	private LocalDate fechaInicio;
 	private LocalDate fechaFin;
 	private String metodoDePago;
-	private Double precioTotal;
+	private Float precioTotal;
 	
 	
 	public Reserva(	UsuarioInquilino 	miInquilino,
 					LocalDate 			miFechaInicio,
 					LocalDate 			miFechaFin,
 					String 				miMetodoDePago,
-					Double              precioTotal) {
+					Float               precioTotal) {
 		this.inquilino = miInquilino;
 		this.fechaInicio = miFechaInicio;
 		this.fechaFin = miFechaFin;
@@ -39,7 +39,7 @@ public class Reserva {
 		return this.metodoDePago;
 	}
 	
-	public Double getPrecioTotal() {
+	public float getPrecioTotal() {
 		return this.precioTotal;
 	}
 	
@@ -48,7 +48,7 @@ public class Reserva {
 		return diasTotalesDeReserva;
 	}
 	
-	public Double getPrecioPorDia() {
+	public Float getPrecioPorDia() {
 		return this.precioTotal / this.getPeriodoDeDias();
 	}
 	

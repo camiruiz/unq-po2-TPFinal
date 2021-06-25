@@ -2,12 +2,13 @@ package src;
 
 import java.util.List;
 
+
 public abstract class Filtro {
 	private String tipo;
 	
 	public abstract List<Publicacion> filtrar(List<Publicacion> publicaciones);
 	
-	protected String getTipo() {
+	public String getTipo() {
 		return tipo;
 	}
 
@@ -19,6 +20,11 @@ public abstract class Filtro {
 		if(condicion) {
 			listaActual.add(p);
 		}
+	}
+	
+	@Override
+	public boolean equals(Object o){
+		return o.getClass() == this.getClass();
 	}
 
 }

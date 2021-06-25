@@ -1,6 +1,7 @@
 package src;
 
-import java.util.ArrayList;
+import java.util.stream.Collectors;
+
 import java.util.List;
 
 public class Ciudad extends Filtro {
@@ -14,8 +15,7 @@ public class Ciudad extends Filtro {
 	
 	@Override
 	public List<Publicacion> filtrar(List<Publicacion> publicaciones) {
-		List<Publicacion> listaActual = new ArrayList<Publicacion>(); 
-		publicaciones.stream().forEach(p -> this.agregarSiDebo(p, listaActual,(p.getCiudad().equals(this.ciudad))));
-		return listaActual;
+		return (publicaciones.stream().filter(p -> p.getCiudad().equals(this.ciudad))).collect(Collectors.toList());
+
 	}
 }

@@ -3,27 +3,32 @@ package src;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
+<<<<<<< HEAD
 
 
 public class Reserva {
+=======
+public class Reserva implements iPeriodoDeTiempo {
+>>>>>>> cc5ec2e86f79c1b1a4f5173264f7dc9fcdd13558
 	
-	private UsuarioInquilino inquilino;
-	private LocalDate fechaInicio;
-	private LocalDate fechaFin;
-	private String metodoDePago;
-	private Float precioTotal;
+	private UsuarioInquilino 	inquilino;
+	private LocalDate 			fechaInicio;
+	private LocalDate 			fechaFin;
+	private String 				metodoDePago;
+	private Double 				precioTotal;
 	
 	
 	public Reserva(	UsuarioInquilino 	miInquilino,
 					LocalDate 			miFechaInicio,
 					LocalDate 			miFechaFin,
 					String 				miMetodoDePago,
-					Float               precioTotal) {
-		this.inquilino = miInquilino;
-		this.fechaInicio = miFechaInicio;
-		this.fechaFin = miFechaFin;
-		this.metodoDePago = miMetodoDePago;
-		this.precioTotal = precioTotal;
+					Double              precioTotal) {
+		super();
+		this.inquilino 		= miInquilino;
+		this.fechaInicio 	= miFechaInicio;
+		this.fechaFin 		= miFechaFin;
+		this.metodoDePago 	= miMetodoDePago;
+		this.precioTotal 	= precioTotal;
 	}
 	
 	
@@ -37,6 +42,7 @@ public class Reserva {
 	public LocalDate getFechaFin() {
 		return this.fechaFin;
 	}
+<<<<<<< HEAD
 	public String getMetodoDePago() {
 		return this.metodoDePago;
 	}
@@ -52,8 +58,13 @@ public class Reserva {
 		return this.fechaInicio.isAfter(LocalDate.now());
 	}
 
+=======
+	public String getMetodoDePago() {
+		return metodoDePago;
+	}	
+>>>>>>> cc5ec2e86f79c1b1a4f5173264f7dc9fcdd13558
 	
-	public float getPrecioTotal() {
+	public Double getPrecioTotal() {
 		return this.precioTotal;
 	}
 	
@@ -62,8 +73,7 @@ public class Reserva {
 		return diasTotalesDeReserva;
 	}
 	
-	public Float getPrecioPorDia() {
+	public Double getPrecioPorDia() {
 		return this.precioTotal / this.getPeriodoDeDias();
-	}
-	
+	}	
 }

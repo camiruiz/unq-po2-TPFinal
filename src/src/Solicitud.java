@@ -5,36 +5,42 @@ import java.time.LocalDate;
 
 public class Solicitud {
 	
-	private UsuarioInquilino inquilino;
-	private LocalDate fechaInicio;
-	private LocalDate fechaFin;
-	private String metodoDePago;
-	private Publicacion publicacion;
+	private UsuarioInquilino 	inquilino;
+	private LocalDate 			fechaInicio;
+	private LocalDate 			fechaFin;
+	private String 				metodoDePago;
+	private Publicacion 		publicacion;
+	private Double				precioTotal;
 	
 	public Solicitud(	UsuarioInquilino miInquilino, 
 						LocalDate miFechaInicio, 
 						LocalDate miFechaFin, 
 						String miMetodoDePago, 
-						Publicacion miPublicacion) {
+						Publicacion miPublicacion,
+						Double precioTotal) {
 		
 			super();
-			fechaInicio 	= miFechaInicio;
-			fechaFin 		= miFechaFin;
-			metodoDePago 	= miMetodoDePago;
-			publicacion		= miPublicacion;
+			this.inquilino		= miInquilino;
+			this.fechaInicio 	= miFechaInicio;
+			this.fechaFin 		= miFechaFin;
+			this.metodoDePago 	= miMetodoDePago;
+			this.publicacion	= miPublicacion;
+			this.precioTotal	= precioTotal;
+			
+	}
+	
+
+	private Reserva generarReserva() {
+		return new Reserva(this.inquilino,
+							this.fechaInicio, 
+							this.fechaFin, 
+							this.metodoDePago,
+							this.precioTotal);
 	}
 	
 	public void aceptar() {
 		Reserva reserva = this.generarReserva(); //genera acoplamiento pero el modelo lo pide
 		this.darReservaALaPublicacion(reserva);
-		this.sacarSolicitudAlPropietario();
-	}
-
-	private Reserva generarReserva() {
-		return (new Reserva(this.inquilino,
-							this.fechaInicio, 
-							this.fechaFin, 
-							this.metodoDePago));
 	}
 
 	private void darReservaALaPublicacion(Reserva reserva) {

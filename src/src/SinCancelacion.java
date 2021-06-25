@@ -6,7 +6,7 @@ public class SinCancelacion extends PoliticaDeCancelacionDeReserva {
 		//los días que había reservado.
 		
 		@Override 
-		public float getMontoParaReserva(Reserva reserva) {
+		public Double getMontoParaCancelacionDeReserva(Reserva reserva) {
 			
 			return reserva.getPrecioTotal(); 
 

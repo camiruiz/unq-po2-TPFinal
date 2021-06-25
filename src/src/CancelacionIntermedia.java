@@ -11,9 +11,9 @@ public class CancelacionIntermedia extends PoliticaDeCancelacionDeReserva{
 		this.estado = new EstadoGratuito();
 	}
 	
-	public float getMontoParaReserva(Reserva reserva) {
+	public Double getMontoParaCancelacionDeReserva(Reserva reserva) {
 		
-		this.estado.getMontoParaReserva(reserva, this);
+		return this.estado.getMontoParaReserva(reserva, this);
 	
 	}
 	

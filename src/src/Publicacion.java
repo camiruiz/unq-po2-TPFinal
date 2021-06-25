@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.temporal.ChronoUnit;
 
 
 
@@ -18,8 +19,9 @@ public class Publicacion implements iPuntuable{
 	private Propietario propietario;
 	private CalculadorDeCalificaciones calculadorDeCalificaciones;
 	private Notificador notificador;
-	private EstadoDeCancelacion politicaDeCancelacion;
+	private PoliticaDeCancelacionDeReserva politicaDeCancelacion;
 	private List<TemporadaAlta> diasEnAumento;
+	private Calendario calendario;
 	
 	public Publicacion(	LocalDate fechaInicio, 
 						LocalDate fechaFin, 
@@ -29,12 +31,10 @@ public class Publicacion implements iPuntuable{
 						Inmueble miInmueble, 
 						Propietario miPropietario,
 						Notificador miNotificador, 
-						EstadoDeCancelacion politicaDeCancel,
-						CalculadorDeCalificaciones miCalculadorDeCalificaciones) {
+						PoliticaDeCancelacionDeReserva politicaDeCancel,
+						CalculadorDeCalificaciones miCalculadorDeCalificaciones,
+						Calendario calendario) {
 		super();
-		this.reservas = new ArrayList<Reserva>();
-		this.diasDisponibles = crearListaDeDias(fechaInicio, fechaFin);
-		this.diasEnAumento = new ArrayList<TemporadaAlta>();
 		this.checkInHorario = horarioDeCheckIn;
 		this.checkOutHorario = horarioDeCheckOut;
 		this.precioPorDia = precio;
@@ -43,20 +43,19 @@ public class Publicacion implements iPuntuable{
 		this.notificador = miNotificador;
 		this.politicaDeCancelacion = politicaDeCancel;
 		this.calculadorDeCalificaciones = miCalculadorDeCalificaciones;
+		this.calendario = calendario;
 	}
 
-	private List<LocalDate> crearListaDeDias(LocalDate fechaInicio, LocalDate fechaFin) {
-		
-		LocalDate fechaActual 	= fechaInicio;
-		List<LocalDate> listaDeDias= new ArrayList<LocalDate>();
-		
-		while(!fechaActual.equals(fechaFin)) { //DIFERENCIA DE DIAS XD
-			listaDeDias.add(fechaActual);
-			fechaActual = fechaActual.plusDays(1); 
+	
+	public Double getPrecioTotalEntreFechas(LocalDate fechaInicio, LocalDate fechaFin) {
+		Double precioActual= 0.0;
+		if(this.calendario.tieneTemporadaAltaEntre(fechaInicio, fechaFin)){
+			precioActual += this.calendario.calcularAumentoEntre(fechaInicio,fechaFin);
 		}
-		return(listaDeDias);
+		precioActual += this.precioPorDia * (ChronoUnit.DAYS.between(fechaInicio, fechaFin));
 	}
 	
+<<<<<<< HEAD
 	public List<Reserva> getReservas() {
 		return reservas;
 	}
@@ -67,6 +66,11 @@ public class Publicacion implements iPuntuable{
 
 	public void aumentarPrecioEnPeriodo(LocalDate fechaDeInicio, LocalDate fechaDeFin, Double aumento) {
 		this.diasEnAumento.add(new TemporadaAlta(fechaDeInicio, fechaDeFin, aumento));
+=======
+	
+	public void aumentarPrecioEnPeriodo(TemporadaAlta temporadaAlta) {
+		this.calendario.addDiasEnAumento(temporadaAlta);
+>>>>>>> cc5ec2e86f79c1b1a4f5173264f7dc9fcdd13558
 	}
 	
 	public float getPuntaje() {
@@ -74,12 +78,7 @@ public class Publicacion implements iPuntuable{
 	}
 	
 	public void recibirReserva(Reserva reserva) {
-		this.reservas.add(reserva);
-	}
-	
-	public void cancelarReserva(Reserva reserva) {
-		//Precondicion: la reserva debe estar en mi lista de reservas
-		this.reservas.remove(reserva);
+		this.calendario.addReserva(reserva);
 	}
 	
 	public float puntajeDueño() {
@@ -118,7 +117,7 @@ public class Publicacion implements iPuntuable{
 		return this.inmueble;
 	}
 
-	public void setPoliticaDeCancelacion(EstadoDeCancelacion politicaDeCancelacion) {
+	public void setPoliticaDeCancelacion(PoliticaDeCancelacionDeReserva politicaDeCancelacion) {
 		this.politicaDeCancelacion = politicaDeCancelacion;
 	}
 
@@ -134,15 +133,18 @@ public class Publicacion implements iPuntuable{
 		return this.inmueble.getCiudad();
 	}
 
+	//probablemente va al calendario
 	public Boolean checkDisponibilidadEntre(LocalDate fechaInicio, LocalDate fechaFin) {
-		List<LocalDate> listaDeDias = crearListaDeDias(fechaInicio, fechaFin);
-		
-		return diasDisponibles.contains(listaDeDias);
+		return calendario.checkDisponibilidadEntre(fechaInicio, fechaFin);
 	}
 	
 	
 	public void setPuntaje(String categoria, Integer calificacion) {
 		calculadorDeCalificaciones.agregarPuntaje(categoria, calificacion);
+	}
+	
+	public void solicitarReserva(Solicitud solicitud) {
+		this.getPropietario().recibirSolicitud(solicitud); //rompe encap
 	}
 
 	public Boolean chequearSiElUsuarioTieneReserva(UsuarioInquilino usuario) {

@@ -1,11 +1,13 @@
+package src;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public abstract class EstadoDeCancelacionIntermedia  {
 
-	abstract public float getMontoParaReserva(Reserva reserva, CancelacionIntermedia cancelacion);
+	abstract public Double getMontoParaReserva(Reserva reserva, CancelacionIntermedia cancelacion);
 	
-	public long getDiferenciaDeDias() {
+	public long getDiferenciaDeDias(Reserva reserva) {
 		return ChronoUnit.DAYS.between(LocalDate.now(), reserva.getFechaInicio());
 	}
 }

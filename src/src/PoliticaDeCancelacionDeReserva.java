@@ -5,6 +5,6 @@ import java.time.temporal.ChronoUnit;
 
 public abstract class PoliticaDeCancelacionDeReserva {
 
-	abstract public float getMontoParaReserva(Reserva reserva);
+	abstract public Double getMontoParaCancelacionDeReserva(Reserva reserva);
 
 }

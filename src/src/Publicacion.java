@@ -104,7 +104,7 @@ public class Publicacion implements iPuntuable{
 		return this.inmueble;
 	}
 
-	public void setPoliticaDeCancelacion(EstadoDeCancelacion politicaDeCancelacion) {
+	public void setPoliticaDeCancelacion(PoliticaDeCancelacionDeReserva politicaDeCancelacion) {
 		this.politicaDeCancelacion = politicaDeCancelacion;
 	}
 

@@ -1,3 +1,5 @@
+package src;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -12,7 +14,7 @@ public class EstadoTotalDePago extends EstadoDeCancelacionIntermedia {
 				montoAPagar = reserva.getPrecioTotal();
 			} else {
 				cancelacion.tuEstadoEs(new EstadoGratuito());
-				montoAPagar = cancelacion.getMontoParaReserva(reserva);
+				montoAPagar = cancelacion.getMontoParaCancelacionDeReserva(reserva);
 		}
 		return montoAPagar;
 	}

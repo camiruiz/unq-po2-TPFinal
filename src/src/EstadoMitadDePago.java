@@ -1,3 +1,5 @@
+package src;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -12,7 +14,7 @@ public class EstadoMitadDePago extends EstadoDeCancelacionIntermedia{
 				montoAPagar = (reserva.getPrecioTotal() * 0.5);
 			} else {
 				cancelacion.tuEstadoEs(new EstadoTotalDePago());
-				montoAPagar = cancelacion.getMontoParaReserva(reserva);
+				montoAPagar = cancelacion.getMontoParaCancelacionDeReserva(reserva);
 		}
 		return montoAPagar;
 	}

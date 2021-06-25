@@ -59,10 +59,6 @@ public class UsuarioInquilino implements iPuntuable {
 			calculadorDeCalificaciones.agregarPuntaje(categoria, calificacion);
 		}
 		
-		public void solicitarReserva(Publicacion publicacion, LocalDate fechaInicio, LocalDate fechaFin, String metodoDePago) {
-			Solicitud solicitud = new Solicitud(this, fechaInicio, fechaFin, metodoDePago, publicacion); //rompe openclose
-			publicacion.getPropietario().recibirSolicitud(solicitud); //rompe encap
-		}
 		
 	
 	

@@ -3,8 +3,6 @@ package src;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-import src.PoliticaDeCancelacionDeReserva;
-
 public class CancelacionBasica extends PoliticaDeCancelacionDeReserva{
 		
 		 /* Cancelación gratuita hasta 10 días antes de la fecha de inicio de la

@@ -2,7 +2,7 @@ package src;
 
 import java.time.LocalDate;
 
-public class Reserva {
+public class Reserva implements iPeriodoDeTiempo {
 	
 	private UsuarioInquilino inquilino;
 	private LocalDate fechaInicio;
@@ -33,8 +33,6 @@ public class Reserva {
 	}
 	public String getMetodoDePago() {
 		return metodoDePago;
-	}
-	
-	
+	}	
 	
 }

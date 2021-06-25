@@ -1,8 +1,11 @@
 package src;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class prueba {
 
@@ -31,8 +34,20 @@ public class prueba {
 			
 			LocalDate fechaInicial = LocalDate.now();
 			
-			System.out.println(listaDeDias.containsAll(listaDeDias1));
+			List<Filtro> l1 = new ArrayList<Filtro>();
 			
+			LocalDate fechaActual12 	= LocalDate.now();
+			LocalDate fechaFin12		= LocalDate.now().plusDays(20);
+			
+			LocalDate fechaActualPregunta	= LocalDate.now().plusDays(5);
+			LocalDate fechaFinPregunta		= LocalDate.now().plusDays(10);
+			Period period = Period.between(fechaActual12, fechaFin12);
+			
+			List<LocalDate>diasDeMiReserva = fechaActual12.datesUntil(fechaFin12.plusDays(20)).collect(Collectors.toList());
+			List<LocalDate>diasAPreguntar = fechaActualPregunta.datesUntil(fechaFinPregunta).collect(Collectors.toList());
+			System.out.println(diasDeMiReserva.stream().anyMatch(diasAPreguntar::contains));
+			
+
 		}
 }
 

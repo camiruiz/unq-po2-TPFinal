@@ -20,6 +20,7 @@ public class Publicacion implements iPuntuable{
 	private Notificador notificador;
 	private EstadoDeCancelacion politicaDeCancelacion;
 	private List<TemporadaAlta> diasEnAumento;
+	private Calendario calendario;
 	
 	public Publicacion(	LocalDate fechaInicio, 
 						LocalDate fechaFin, 
@@ -30,11 +31,9 @@ public class Publicacion implements iPuntuable{
 						Propietario miPropietario,
 						Notificador miNotificador, 
 						EstadoDeCancelacion politicaDeCancel,
-						CalculadorDeCalificaciones miCalculadorDeCalificaciones) {
+						CalculadorDeCalificaciones miCalculadorDeCalificaciones,
+						Calendario calendario) {
 		super();
-		this.reservas = new ArrayList<Reserva>();
-		this.diasDisponibles = crearListaDeDias(fechaInicio, fechaFin);
-		this.diasEnAumento = new ArrayList<TemporadaAlta>();
 		this.checkInHorario = horarioDeCheckIn;
 		this.checkOutHorario = horarioDeCheckOut;
 		this.precioPorDia = precio;
@@ -43,6 +42,7 @@ public class Publicacion implements iPuntuable{
 		this.notificador = miNotificador;
 		this.politicaDeCancelacion = politicaDeCancel;
 		this.calculadorDeCalificaciones = miCalculadorDeCalificaciones;
+		this.calendario = calendario;
 	}
 
 	private List<LocalDate> crearListaDeDias(LocalDate fechaInicio, LocalDate fechaFin) {
@@ -58,7 +58,7 @@ public class Publicacion implements iPuntuable{
 	}
 	
 	public void aumentarPrecioEnPeriodo(LocalDate fechaDeInicio, LocalDate fechaDeFin, Double aumento) {
-		this.diasEnAumento.add(new TemporadaAlta(fechaDeInicio, fechaDeFin, aumento));
+		this.calendario.addDiasEnAumento(new TemporadaAlta(fechaDeInicio, fechaDeFin, aumento));
 	}
 	
 	public float getPuntaje() {
@@ -66,12 +66,12 @@ public class Publicacion implements iPuntuable{
 	}
 	
 	public void recibirReserva(Reserva reserva) {
-		this.reservas.add(reserva);
+		this.calendario.addReserva(reserva);
 	}
 	
 	public void cancelarReserva(Reserva reserva) {
 		//Precondicion: la reserva debe estar en mi lista de reservas
-		this.reservas.remove(reserva);
+		this.calendario.sacarReserva(reserva);
 	}
 	
 	public float puntajeDueño() {
@@ -126,6 +126,7 @@ public class Publicacion implements iPuntuable{
 		return this.inmueble.getCiudad();
 	}
 
+	//probablemente va al calendario
 	public Boolean checkDisponibilidadEntre(LocalDate fechaInicio, LocalDate fechaFin) {
 		List<LocalDate> listaDeDias = crearListaDeDias(fechaInicio, fechaFin);
 		

@@ -1,5 +1,6 @@
 package src;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -88,14 +89,13 @@ public class GestorDePublicaciones {
 		return this.getReservasDeUsuario(usuario).size();
 	}
 	
-	public List<Inmueble> getInmueblesLibres(List<Inmueble> listaDeInmuebles){
+	public List<Inmueble> getInmueblesLibres(){
 		List<Inmueble> inmueblesLibres = new ArrayList<Inmueble>();
 				(this.publicaciones.stream()			
 				.filter(p	-> p.estaLibre()))
 				.forEach(p 	-> inmueblesLibres.add(p.getInmueble()));
 		return inmueblesLibres;
 	}
-	
 	
 	
 	public Float getTasaDeOcupacion(){
@@ -111,7 +111,54 @@ public class GestorDePublicaciones {
 		.forEach(p -> inmuebles.add(p.getInmueble()));
 	}
 	
+	
+	public Integer getVecesQueAlquiloUnInmueble(Publicacion publicacion){
+		Integer vecesAlquilado = 0;
+		publicacion.getReservas().stream()
+		.filter(r -> r.seConcretoAnteriormente())  // si se concreto anteriormente es porque fue alquilado.
+		.forEach(r -> vecesAlquilado += 1);
+				
+		return vecesAlquilado;
+	}
+	
+	//Que manera es mejor para resolver este ejercicio? Que la reserva sea la responsable de implementar el mensaje seConcretoAnteriormente() como esta hecho arriba en el metodo que no esta comentado
+	//O hacer que el GestorDePublicaciones sea el encargado de implementar el mensaje y saber si una reserva se concreto anteriormente.
+	/*
+	public Integer getVecesQueAlquiloUnInmueble(Publicacion publicacion){
+		Integer vecesAlquilado = 0;
+		publicacion.getReservas().stream()
+		.filter(r -> this.seConcretoAnteriormente(r))  // Aca es la diferencia
+		.forEach(r -> vecesAlquilado += 1);
+				
+		return vecesAlquilado;
+	}
+	
+	private Boolean seContreroAnteriormente(Reserva reserva){
+		return reserva.getFechaInicio().isBefore(LocalDate.now());
+		
+	}*/
+	
+	
+	public Integer getVecesQueAlquiloTodosSusInmuebles(Propietario propietario){
+		Integer vecesQueAlquiloTotal = 0;
+		this.getPublicacionesDeUsuario(propietario).stream()
+		.forEach(p -> vecesQueAlquiloTotal += (this.getVecesQueAlquiloUnInmueble(p)));
+				
+		return vecesQueAlquiloTotal;
+	}
+	
+	public List<Publicacion> getPublicacionesDeUsuario(Propietario propietario){
+		List<Publicacion> publicacionesDelUsuario = this.publicaciones.stream().filter(p -> this.compararUsuario(propietario, p))
+				.collect(Collectors.toList());
+		return publicacionesDelUsuario;
+	}
 
+	private Boolean compararUsuario(Propietario propietario, Publicacion p) {
+		return p.getPropietario().equals(propietario);	
+	}
+	
+	
+	
 	
 	
 }

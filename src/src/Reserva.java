@@ -66,5 +66,11 @@ public class Reserva implements iPeriodoDeTiempo {
 	
 	public Double getPrecioPorDia() {
 		return this.precioTotal / this.getPeriodoDeDias();
+	}
+
+	
+	public Boolean seConcretoAnteriormente(){
+		return this.getFechaInicio().isBefore(LocalDate.now());	
 	}	
+	
 }

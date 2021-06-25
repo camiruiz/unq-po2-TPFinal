@@ -92,7 +92,7 @@ public class GestorDePublicaciones {
 	public List<Inmueble> getInmueblesLibres(){
 		List<Inmueble> inmueblesLibres = new ArrayList<Inmueble>();
 				(this.publicaciones.stream()			
-				.filter(p	-> p.estaLibre()))           //la publicacion debe implementar estaLibre o es trabajo del gestorDePublicaciones de hacerlo? La misma duda en un par de metodos mas abajo.
+				.filter(p	-> p.estaLibre()))           							//la publicacion debe implementar estaLibre o es trabajo del gestorDePublicaciones de hacerlo? La misma duda en un par de metodos mas abajo.
 				.forEach(p 	-> inmueblesLibres.add(p.getInmueble()));
 		return inmueblesLibres;
 	}
@@ -163,29 +163,3 @@ public class GestorDePublicaciones {
 	
 }
 
-
-//Ejemplo de Singleton.
-/*class Singleton
-{
-// static variable single_instance of type Singleton
-private static Singleton single_instance = null;
-
-// variable of type String
-public String s;
-
-// private constructor restricted to this class itself
-private Singleton()
-{
-    s = "Hello I am a string part of Singleton class";
-}
-
-// static method to create instance of Singleton class
-public static Singleton getInstance()
-{
-    if (single_instance == null)
-        single_instance = new Singleton();
-
-    return single_instance;
-	}
-}
-*/

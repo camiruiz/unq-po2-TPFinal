@@ -55,7 +55,7 @@ public class Publicacion implements iPuntuable{
 		precioActual += this.precioPorDia * (ChronoUnit.DAYS.between(fechaInicio, fechaFin));
 	}
 	
-<<<<<<< HEAD
+
 	public List<Reserva> getReservas() {
 		return reservas;
 	}
@@ -66,11 +66,10 @@ public class Publicacion implements iPuntuable{
 
 	public void aumentarPrecioEnPeriodo(LocalDate fechaDeInicio, LocalDate fechaDeFin, Double aumento) {
 		this.diasEnAumento.add(new TemporadaAlta(fechaDeInicio, fechaDeFin, aumento));
-=======
-	
+	}
+
 	public void aumentarPrecioEnPeriodo(TemporadaAlta temporadaAlta) {
 		this.calendario.addDiasEnAumento(temporadaAlta);
->>>>>>> cc5ec2e86f79c1b1a4f5173264f7dc9fcdd13558
 	}
 	
 	public float getPuntaje() {

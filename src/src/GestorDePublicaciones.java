@@ -92,7 +92,7 @@ public class GestorDePublicaciones {
 	public List<Inmueble> getInmueblesLibres(){
 		List<Inmueble> inmueblesLibres = new ArrayList<Inmueble>();
 				(this.publicaciones.stream()			
-				.filter(p	-> p.estaLibre()))
+				.filter(p	-> p.estaLibre()))           //la publicacion debe implementar estaLibre o es trabajo del gestorDePublicaciones de hacerlo? La misma duda en un par de metodos mas abajo.
 				.forEach(p 	-> inmueblesLibres.add(p.getInmueble()));
 		return inmueblesLibres;
 	}

@@ -3,13 +3,8 @@ package src;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-<<<<<<< HEAD
 
-
-public class Reserva {
-=======
 public class Reserva implements iPeriodoDeTiempo {
->>>>>>> cc5ec2e86f79c1b1a4f5173264f7dc9fcdd13558
 	
 	private UsuarioInquilino 	inquilino;
 	private LocalDate 			fechaInicio;
@@ -42,7 +37,7 @@ public class Reserva implements iPeriodoDeTiempo {
 	public LocalDate getFechaFin() {
 		return this.fechaFin;
 	}
-<<<<<<< HEAD
+	
 	public String getMetodoDePago() {
 		return this.metodoDePago;
 	}
@@ -58,11 +53,7 @@ public class Reserva implements iPeriodoDeTiempo {
 		return this.fechaInicio.isAfter(LocalDate.now());
 	}
 
-=======
-	public String getMetodoDePago() {
-		return metodoDePago;
-	}	
->>>>>>> cc5ec2e86f79c1b1a4f5173264f7dc9fcdd13558
+
 	
 	public Double getPrecioTotal() {
 		return this.precioTotal;

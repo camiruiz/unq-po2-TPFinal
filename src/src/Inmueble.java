@@ -2,14 +2,14 @@ package src;
 
 import java.util.ArrayList;
 
-public class Inmueble{
+public class Inmueble {
 	private String tipoInmueble;
 	private String superficie;
 	private String pais;
 	private String ciudad;
 	private String direccion;
 	private ArrayList<String> servicios;
-	private Integer capacidad;
+	private int capacidad;
 	
 	public Inmueble(String tipoInmueble,
 					String superficie, 
@@ -17,7 +17,7 @@ public class Inmueble{
 					String ciudad,
 					String direccion, 
 					ArrayList<String> servicios, 
-					Integer capacidad) {
+					int capacidad) {
 		
 		this.tipoInmueble = tipoInmueble;
 		this.superficie = superficie;

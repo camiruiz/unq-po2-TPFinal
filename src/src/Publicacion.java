@@ -50,9 +50,9 @@ public class Publicacion implements iPuntuable{
 		LocalDate fechaActual 	= fechaInicio;
 		List<LocalDate> listaDeDias= new ArrayList<LocalDate>();
 		
-		while(!fechaActual.equals(fechaFin)) {
+		while(!fechaActual.equals(fechaFin)) { //DIFERENCIA DE DIAS XD
 			listaDeDias.add(fechaActual);
-			fechaActual = fechaActual.plusDays(1);
+			fechaActual = fechaActual.plusDays(1); 
 		}
 		return(listaDeDias);
 	}
@@ -62,11 +62,7 @@ public class Publicacion implements iPuntuable{
 	}
 	
 	public float getPuntaje() {
-		return(this.calculadorDeCalificaciones.getPromedio());
-	}
-	
-	public float setPuntaje(String, Integer) {
-		return(this.calculadorDeCalificaciones.setPuntaje(String, Integer));
+		return(this.calculadorDeCalificaciones.calcularPromedio());
 	}
 	
 	public void recibirReserva(Reserva reserva) {
@@ -134,6 +130,11 @@ public class Publicacion implements iPuntuable{
 		List<LocalDate> listaDeDias = crearListaDeDias(fechaInicio, fechaFin);
 		
 		return diasDisponibles.contains(listaDeDias);
+	}
+	
+	
+	public void setPuntaje(String categoria, Integer calificacion) {
+		calculadorDeCalificaciones.agregarPuntaje(categoria, calificacion);
 	}
 
 }

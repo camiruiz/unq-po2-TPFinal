@@ -20,4 +20,9 @@ public class PrecioMin extends Filtro {
 
 	}
 
+	
+	public List<Publicacion> filtrar2(List<Publicacion> publicaciones) {
+		List<Publicacion> listaActual = new ArrayList<Publicacion>(); 
+		return publicaciones.stream().filter(p -> (p.getPrecioPorDia() >= this.precioMin));
+	
 }

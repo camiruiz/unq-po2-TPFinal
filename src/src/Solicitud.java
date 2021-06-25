@@ -25,7 +25,7 @@ public class Solicitud {
 	}
 	
 	public void aceptar() {
-		Reserva reserva = this.generarReserva();
+		Reserva reserva = this.generarReserva(); //genera acoplamiento pero el modelo lo pide
 		this.darReservaALaPublicacion(reserva);
 		this.sacarSolicitudAlPropietario();
 	}

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.temporal.ChronoUnit;
 
 
 
@@ -18,7 +19,7 @@ public class Publicacion implements iPuntuable{
 	private Propietario propietario;
 	private CalculadorDeCalificaciones calculadorDeCalificaciones;
 	private Notificador notificador;
-	private EstadoDeCancelacion politicaDeCancelacion;
+	private PoliticaDeCancelacionDeReserva politicaDeCancelacion;
 	private List<TemporadaAlta> diasEnAumento;
 	private Calendario calendario;
 	
@@ -30,7 +31,7 @@ public class Publicacion implements iPuntuable{
 						Inmueble miInmueble, 
 						Propietario miPropietario,
 						Notificador miNotificador, 
-						EstadoDeCancelacion politicaDeCancel,
+						PoliticaDeCancelacionDeReserva politicaDeCancel,
 						CalculadorDeCalificaciones miCalculadorDeCalificaciones,
 						Calendario calendario) {
 		super();
@@ -45,20 +46,18 @@ public class Publicacion implements iPuntuable{
 		this.calendario = calendario;
 	}
 
-	private List<LocalDate> crearListaDeDias(LocalDate fechaInicio, LocalDate fechaFin) {
-		
-		LocalDate fechaActual 	= fechaInicio;
-		List<LocalDate> listaDeDias= new ArrayList<LocalDate>();
-		
-		while(!fechaActual.equals(fechaFin)) { //DIFERENCIA DE DIAS XD
-			listaDeDias.add(fechaActual);
-			fechaActual = fechaActual.plusDays(1); 
+	
+	public Double getPrecioTotalEntreFechas(LocalDate fechaInicio, LocalDate fechaFin) {
+		Double precioActual= 0.0;
+		if(this.calendario.tieneTemporadaAltaEntre(fechaInicio, fechaFin)){
+			precioActual += this.calendario.calcularAumentoEntre(fechaInicio,fechaFin);
 		}
-		return(listaDeDias);
+		precioActual += this.precioPorDia * (ChronoUnit.DAYS.between(fechaInicio, fechaFin));
 	}
 	
-	public void aumentarPrecioEnPeriodo(LocalDate fechaDeInicio, LocalDate fechaDeFin, Double aumento) {
-		this.calendario.addDiasEnAumento(new TemporadaAlta(fechaDeInicio, fechaDeFin, aumento));
+	
+	public void aumentarPrecioEnPeriodo(TemporadaAlta temporadaAlta) {
+		this.calendario.addDiasEnAumento(temporadaAlta);
 	}
 	
 	public float getPuntaje() {
@@ -67,11 +66,6 @@ public class Publicacion implements iPuntuable{
 	
 	public void recibirReserva(Reserva reserva) {
 		this.calendario.addReserva(reserva);
-	}
-	
-	public void cancelarReserva(Reserva reserva) {
-		//Precondicion: la reserva debe estar en mi lista de reservas
-		this.calendario.sacarReserva(reserva);
 	}
 	
 	public float puntajeDueño() {
@@ -128,14 +122,16 @@ public class Publicacion implements iPuntuable{
 
 	//probablemente va al calendario
 	public Boolean checkDisponibilidadEntre(LocalDate fechaInicio, LocalDate fechaFin) {
-		List<LocalDate> listaDeDias = crearListaDeDias(fechaInicio, fechaFin);
-		
-		return diasDisponibles.contains(listaDeDias);
+		return calendario.checkDisponibilidadEntre(fechaInicio, fechaFin);
 	}
 	
 	
 	public void setPuntaje(String categoria, Integer calificacion) {
 		calculadorDeCalificaciones.agregarPuntaje(categoria, calificacion);
+	}
+	
+	public void solicitarReserva(Solicitud solicitud) {
+		this.getPropietario().recibirSolicitud(solicitud); //rompe encap
 	}
 
 }

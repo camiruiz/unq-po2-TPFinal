@@ -1,38 +1,55 @@
 package src;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Reserva implements iPeriodoDeTiempo {
 	
-	private UsuarioInquilino inquilino;
-	private LocalDate fechaInicio;
-	private LocalDate fechaFin;
-	private String metodoDePago;
-	
+	private UsuarioInquilino 	inquilino;
+	private LocalDate 			fechaInicio;
+	private LocalDate 			fechaFin;
+	private String 				metodoDePago;
+	private Double 				precioTotal;
 	
 	
 	public Reserva(	UsuarioInquilino 	miInquilino,
 					LocalDate 			miFechaInicio,
 					LocalDate 			miFechaFin,
-					String 				miMetodoDePago) {
-		inquilino = miInquilino;
-		fechaInicio = miFechaInicio;
-		fechaFin = miFechaFin;
-		metodoDePago = miMetodoDePago;
+					String 				miMetodoDePago,
+					Double              precioTotal) {
+		super();
+		this.inquilino 		= miInquilino;
+		this.fechaInicio 	= miFechaInicio;
+		this.fechaFin 		= miFechaFin;
+		this.metodoDePago 	= miMetodoDePago;
+		this.precioTotal 	= precioTotal;
 	}
 	
 	
 	public UsuarioInquilino getInquilino() {
-		return inquilino;
+		return this.inquilino;
+		
 	}
 	public LocalDate getFechaInicio() {
-		return fechaInicio;
+		return this.fechaInicio;
 	}
 	public LocalDate getFechaFin() {
-		return fechaFin;
+		return this.fechaFin;
 	}
 	public String getMetodoDePago() {
 		return metodoDePago;
 	}	
 	
+	public Double getPrecioTotal() {
+		return this.precioTotal;
+	}
+	
+	public long getPeriodoDeDias() {
+		long diasTotalesDeReserva = ChronoUnit.DAYS.between(this.fechaInicio, this.fechaFin);
+		return diasTotalesDeReserva;
+	}
+	
+	public Double getPrecioPorDia() {
+		return this.precioTotal / this.getPeriodoDeDias();
+	}	
 }

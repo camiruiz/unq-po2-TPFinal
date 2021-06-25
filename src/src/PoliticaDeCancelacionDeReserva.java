@@ -1,6 +1,10 @@
 package src;
 
-public class PoliticaDeCancelacionDeReserva {
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
-	abstract public getMontoParaReserva(Reserva reserva, Publicacion publicacion);
+public abstract class PoliticaDeCancelacionDeReserva {
+
+	abstract public Double getMontoParaCancelacionDeReserva(Reserva reserva);
+
 }

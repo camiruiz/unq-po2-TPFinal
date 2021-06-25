@@ -3,6 +3,8 @@ package src;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 
 public class Disponibilidad extends Filtro {
 
@@ -16,9 +18,7 @@ public class Disponibilidad extends Filtro {
 	}
 	@Override
 	public List<Publicacion> filtrar(List<Publicacion> publicaciones) {
-		List<Publicacion> listaActual = new ArrayList<Publicacion>(); 
-		publicaciones.stream().forEach(p -> this.agregarSiDebo(p, listaActual,(p.checkDisponibilidadEntre(fechaInicio,fechaFin))));
-		return listaActual;
+		return (publicaciones.stream().filter(p -> p.checkDisponibilidadEntre(fechaInicio,fechaFin))).collect(Collectors.toList());
 	}
 
 }

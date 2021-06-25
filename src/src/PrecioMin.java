@@ -3,6 +3,8 @@ package src;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 
 public class PrecioMin extends Filtro {
 	private Double precioMin;
@@ -14,9 +16,8 @@ public class PrecioMin extends Filtro {
 	
 	@Override
 	public List<Publicacion> filtrar(List<Publicacion> publicaciones) {
-		List<Publicacion> listaActual = new ArrayList<Publicacion>(); 
-		publicaciones.stream().forEach(p -> this.agregarSiDebo(p, listaActual,(p.getPrecioPorDia() >= this.precioMin)));
-		return listaActual;
+		return (publicaciones.stream().filter(p -> p.getPrecioPorDia() >= this.precioMin)).collect(Collectors.toList());
+
 	}
 
 }

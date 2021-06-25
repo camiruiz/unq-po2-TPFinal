@@ -5,12 +5,13 @@ import java.time.LocalDate;
 
 public class Solicitud {
 	
-	private UsuarioInquilino 	inquilino;
-	private LocalDate 			fechaInicio;
-	private LocalDate 			fechaFin;
-	private String 				metodoDePago;
-	private Publicacion 		publicacion;
-	private Double				precioTotal;
+	private UsuarioInquilino 			inquilino;
+	private LocalDate 					fechaInicio;
+	private LocalDate 					fechaFin;
+	private String 						metodoDePago;
+	private Publicacion 				publicacion;
+	private Double						precioTotal;
+	private EstadosDeSolicitudDeReserva	estadoDeSolicitudDeReserva;
 	
 	public Solicitud(	UsuarioInquilino miInquilino, 
 						LocalDate miFechaInicio, 
@@ -20,17 +21,18 @@ public class Solicitud {
 						Double precioTotal) {
 		
 			super();
-			this.inquilino		= miInquilino;
-			this.fechaInicio 	= miFechaInicio;
-			this.fechaFin 		= miFechaFin;
-			this.metodoDePago 	= miMetodoDePago;
-			this.publicacion	= miPublicacion;
-			this.precioTotal	= precioTotal;
+			this.inquilino					= miInquilino;
+			this.fechaInicio 				= miFechaInicio;
+			this.fechaFin 					= miFechaFin;
+			this.metodoDePago 				= miMetodoDePago;
+			this.publicacion				= miPublicacion;
+			this.precioTotal				= precioTotal;
+			this.estadoDeSolicitudDeReserva	= new EstadoDeSolicitudDeReservaPendiente();
 			
 	}
 	
 
-	private Reserva generarReserva() {
+	Reserva generarReserva() {
 		return new Reserva(this.inquilino,
 							this.fechaInicio, 
 							this.fechaFin, 
@@ -43,11 +45,11 @@ public class Solicitud {
 		this.darReservaALaPublicacion(reserva);
 	}
 
-	private void darReservaALaPublicacion(Reserva reserva) {
+	public void darReservaALaPublicacion(Reserva reserva) {
 		publicacion.recibirReserva(reserva);
 	}
 
-	private void sacarSolicitudAlPropietario() {
+	public void sacarSolicitudAlPropietario() {
 		this.sacarSolicitudAlPropietario();
 	}
 	
@@ -73,6 +75,10 @@ public class Solicitud {
 
 	public Publicacion getPublicacion() {
 		return publicacion;
+	}
+	
+	public void tuEstadoEs(EstadosDeSolicitudDeReserva estado) {
+		estadoDeSolicitudDeReserva = estado;
 	}
 	
 }

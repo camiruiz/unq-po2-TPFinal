@@ -32,7 +32,7 @@ public class Solicitud {
 	}
 	
 
-	Reserva generarReserva() {
+	private Reserva generarReserva() {
 		return new Reserva(this.inquilino,
 							this.fechaInicio, 
 							this.fechaFin, 

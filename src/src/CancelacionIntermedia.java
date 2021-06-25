@@ -4,22 +4,21 @@ public class CancelacionIntermedia extends PoliticaDeCancelacionDeReserva{
 	
 	//Hasta 20 días antes es gratuita, entre el día 19 anterior y el
 	//día 10 anterior paga el 50 %, después del 10mo día paga la totalidad.
-
+	private EstadoDeCancelacionIntermedia estado;
 	
-	@Override 
-	public getMontoParaReserva(Reserva reserva, Publicacion publicacion) {
+	public CancelacionIntermedia () {
 		
-		private float montoAPagar = 0; 
+		this.estado = new EstadoGratuito();
+	}
+	
+	public float getMontoParaReserva(Reserva reserva) {
 		
-		long diferenciaEnDias = ChronoUnit.DAYS.between(LocalDate.now(), reserva.fechaInicio());
-
-			if (this.diferenciaEnDias< 20 && this.diferenciaEnDias >10) {
-				this.montoAPagar = (reserva.getPrecioTotal() * 0.5);
-			} else if (this.diferenciaEnDias >10) { 
-				this.montoAPagar = reserva.getPrecioTotal();
-		}
-			
-		return this.montoAPagar;
+		this.estado.getMontoParaReserva(reserva, this);
 	
 	}
+	
+	void tuEstadoEs(EstadoDeCancelacionIntermedia estado) {
+		this.estado = estado;
+	}
+	
 }

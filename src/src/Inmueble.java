@@ -24,8 +24,8 @@ public class Inmueble {
 		this.pais = pais;
 		this.ciudad = ciudad;
 		this.direccion = direccion;
-		this.servicios = new ArrayList<String>;
-		this capacidad = capacidad;
+		this.servicios = new ArrayList<String>();
+		this.capacidad = capacidad;
 		
 	}
 	

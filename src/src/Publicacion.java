@@ -50,9 +50,9 @@ public class Publicacion implements iPuntuable{
 		LocalDate fechaActual 	= fechaInicio;
 		List<LocalDate> listaDeDias= new ArrayList<LocalDate>();
 		
-		while(!fechaActual.equals(fechaFin)) {
+		while(!fechaActual.equals(fechaFin)) { //DIFERENCIA DE DIAS XD
 			listaDeDias.add(fechaActual);
-			fechaActual = fechaActual.plusDays(1);
+			fechaActual = fechaActual.plusDays(1); 
 		}
 		return(listaDeDias);
 	}

@@ -60,8 +60,8 @@ public class UsuarioInquilino implements iPuntuable {
 		}
 		
 		public void solicitarReserva(Publicacion publicacion, LocalDate fechaInicio, LocalDate fechaFin, String metodoDePago) {
-			Solicitud solicitud = new Solicitud(this, fechaInicio, fechaFin, metodoDePago, publicacion);
-			publicacion.getPropietario().recibirSolicitud(solicitud);
+			Solicitud solicitud = new Solicitud(this, fechaInicio, fechaFin, metodoDePago, publicacion); //rompe openclose
+			publicacion.getPropietario().recibirSolicitud(solicitud); //rompe encap
 		}
 		
 	

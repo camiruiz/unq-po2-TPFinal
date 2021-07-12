@@ -16,8 +16,6 @@ class PublicacionTest {
 	private LocalTime 						checkInHorario;
 	private LocalTime						checkOutHorario;
 	private Double					 		precioPorDia;
-	private List<Reserva> 					reservas;
-	private List<LocalDate> 				diasDisponibles;
 	private Inmueble 						inmueble;
 	private Propietario 					propietario;
 	private CalculadorDeCalificaciones 		calculadorDeCalificaciones;

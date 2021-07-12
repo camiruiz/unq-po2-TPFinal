@@ -69,6 +69,11 @@ public class Calendario {
 	public void sacarReserva(Reserva reserva) {
 		this.reservas.remove(reserva);
 	}
+
+	public List<Reserva> getReservas() {
+		// TODO Auto-generated method stub
+		return this.reservas;
+	}
 	
 
 }

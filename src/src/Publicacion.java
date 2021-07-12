@@ -54,7 +54,12 @@ public class Publicacion {
 		return precioActual;
 	}
 	
-	
+
+	public List<Reserva> getReservas() {
+		return this.calendario.getReservas();
+	}
+
+
 	public void aumentarPrecioEnPeriodo(TemporadaAlta temporadaAlta) {
 		this.calendario.addDiasEnAumento(temporadaAlta);
 	}
@@ -129,7 +134,6 @@ public class Publicacion {
 		this.getPropietario().recibirSolicitud(solicitud); 
 	}
 
-
 	public void cancelarReserva(Reserva reserva) {
 		this.notificarPorCancelacion(reserva);
 		this.calendario.sacarReserva(reserva);
@@ -158,7 +162,15 @@ public class Publicacion {
 
 
 	public Double calcularMontoPorCancelacionPara(Reserva reserva) {
-		return this.politicaDeCancelacion.getMontoParaCancelacionDeReserva(reserva);
+		return this.politicaDeCancelacion.getMontoParaCancelacionDeReserva(reserva);	
+	}
+	
+	public Boolean chequearSiElUsuarioTieneReserva(UsuarioInquilino usuario) {
+		return ( this.getReservas().stream().anyMatch(r -> r.compararInquilino(usuario)));
+	}
+
+	public Boolean chequearCiudad(String ciudad) {
+		return this.inmueble.getCiudad().equals(ciudad);
 	}
 
 

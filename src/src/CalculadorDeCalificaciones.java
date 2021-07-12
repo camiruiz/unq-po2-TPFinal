@@ -44,13 +44,13 @@ public class CalculadorDeCalificaciones {
 			//Integer valor = this.listaDePuntajes.stream().mapToInt(Calificacion::getCalificacion).average(); Al momento de testear esto ver q devuelve el average xd
 		}
 
-	public void agregarPuntaje(String categoria, Integer calificacion) {
-		this.listaDePuntajes.add(new Calificacion(categoria, calificacion));
+	public void agregarPuntaje(Calificacion calificacion) {
+		this.listaDePuntajes.add(calificacion);
 		
 	}
 	
-	public void agregarComentario(String cuerpo, UsuarioInquilino usuario) {
-		this.listaDeComentarios.add(new Comentario(cuerpo, usuario));
+	public void agregarComentario(Comentario comentario) {
+		this.listaDeComentarios.add(comentario);
 		
 	}
 	

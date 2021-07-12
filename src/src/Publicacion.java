@@ -8,42 +8,40 @@ import java.time.temporal.ChronoUnit;
 
 
 
-public class Publicacion implements iPuntuable{
+public class Publicacion {
 
 	private LocalTime checkInHorario;
 	private LocalTime checkOutHorario;
 	private Double precioPorDia;
-	private List<Reserva> reservas;
-	private List<LocalDate> diasDisponibles;
 	private Inmueble inmueble;
 	private Propietario propietario;
 	private CalculadorDeCalificaciones calculadorDeCalificaciones;
-	private Notificador notificador;
 	private PoliticaDeCancelacionDeReserva politicaDeCancelacion;
-	private List<TemporadaAlta> diasEnAumento;
+	//private List<TemporadaAlta> diasEnAumento;
 	private Calendario calendario;
+	private List<IListener> listeners;
 	
-	public Publicacion(	LocalDate fechaInicio, 
-						LocalDate fechaFin, 
-						LocalTime horarioDeCheckIn, 
-						LocalTime horarioDeCheckOut, 
-						Double precio, 
-						Inmueble miInmueble, 
-						Propietario miPropietario,
-						Notificador miNotificador, 
-						PoliticaDeCancelacionDeReserva politicaDeCancel,
-						CalculadorDeCalificaciones miCalculadorDeCalificaciones,
-						Calendario calendario) {
+	public Publicacion(	 
+						LocalTime 						horarioDeCheckIn, 
+						LocalTime 						horarioDeCheckOut, 
+						Double 							precio, 
+						Inmueble 						miInmueble, 
+						Propietario 					miPropietario, 
+						PoliticaDeCancelacionDeReserva	politicaDeCancel,
+						CalculadorDeCalificaciones 		miCalculadorDeCalificaciones,
+						Calendario 						calendario) {
 		super();
+		
+		
 		this.checkInHorario = horarioDeCheckIn;
 		this.checkOutHorario = horarioDeCheckOut;
 		this.precioPorDia = precio;
 		this.inmueble = miInmueble;
 		this.propietario = miPropietario;
-		this.notificador = miNotificador;
 		this.politicaDeCancelacion = politicaDeCancel;
 		this.calculadorDeCalificaciones = miCalculadorDeCalificaciones;
 		this.calendario = calendario;
+		this.listeners	= new ArrayList<IListener>();
 	}
 
 	
@@ -53,6 +51,7 @@ public class Publicacion implements iPuntuable{
 			precioActual += this.calendario.calcularAumentoEntre(fechaInicio,fechaFin);
 		}
 		precioActual += this.precioPorDia * (ChronoUnit.DAYS.between(fechaInicio, fechaFin));
+		return precioActual;
 	}
 	
 	
@@ -69,7 +68,7 @@ public class Publicacion implements iPuntuable{
 	}
 	
 	public float puntajeDueño() {
-		this.propietario.getPuntaje();
+		return this.propietario.getPuntaje();
 	}
 
 	public LocalTime getCheckInHorario() {
@@ -89,15 +88,11 @@ public class Publicacion implements iPuntuable{
 	}
 
 	public Double getPrecioPorDia() {
-		return precioPorDia;
+		return this.precioPorDia;
 	}
 
 	public void setPrecioPorDia(Double precioPorDia) {
 		this.precioPorDia = precioPorDia;
-	}
-
-	public List<LocalDate> getDiasDisponibles() {
-		return this.diasDisponibles;
 	}
 
 	public Inmueble getInmueble() {
@@ -126,12 +121,45 @@ public class Publicacion implements iPuntuable{
 	}
 	
 	
-	public void setPuntaje(String categoria, Integer calificacion) {
-		calculadorDeCalificaciones.agregarPuntaje(categoria, calificacion);
+	public void setPuntaje(Calificacion calificacion) {
+		calculadorDeCalificaciones.agregarPuntaje(calificacion);
 	}
 	
 	public void solicitarReserva(Solicitud solicitud) {
-		this.getPropietario().recibirSolicitud(solicitud); //rompe encap
+		this.getPropietario().recibirSolicitud(solicitud); 
 	}
+
+
+	public void cancelarReserva(Reserva reserva) {
+		this.notificarPorCancelacion(reserva);
+		this.calendario.sacarReserva(reserva);
+	}
+
+
+	private void notificarPorCancelacion(Reserva reserva) {
+		this.listeners.stream().forEach(listener -> listener.notificarPorCancelacion(this, reserva));
+	}
+
+
+	public void attachListener(IListener listener) {
+		this.listeners.add(listener);
+		
+	}
+	
+	public void detachListener(IListener listener) {
+		this.listeners.remove(listener);
+	}
+
+
+	public void disminuirPrecio(Double montoADisminuir) {
+		this.precioPorDia -= montoADisminuir;
+		this.listeners.stream().forEach(listener -> listener.notificarPorBajaDePrecio(this));
+	}
+
+
+	public Double calcularMontoPorCancelacionPara(Reserva reserva) {
+		return this.politicaDeCancelacion.getMontoParaCancelacionDeReserva(reserva);
+	}
+
 
 }

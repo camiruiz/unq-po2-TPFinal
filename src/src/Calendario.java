@@ -65,6 +65,10 @@ public class Calendario {
 		return totalAumento;
 		
 	}
+
+	public void sacarReserva(Reserva reserva) {
+		this.reservas.remove(reserva);
+	}
 	
 
 }

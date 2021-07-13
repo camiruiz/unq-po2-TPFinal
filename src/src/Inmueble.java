@@ -73,6 +73,10 @@ public class Inmueble {
 		return servicios;
 	}
 	
+	public void setServicio(String servicio) {
+		this.servicios.add(servicio);
+	}
+	
 	public int getCapacidad() {
 		return capacidad;
 	}

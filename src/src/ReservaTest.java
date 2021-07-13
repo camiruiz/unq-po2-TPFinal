@@ -112,6 +112,23 @@ class ReservaTest {
 			
 	}
 	
+	@Test
+	void test010UnaReservaSabeSuFechaFin() {
+		
+		reserva.setFechaFin(fechaFin);
+		
+		assertEquals(reserva.getFechaFin(), fechaFin);
+	}
+	
+	@Test
+	void test011UnaReservaSabeSuMetodoDePago() {
+		reserva.setMetodoDePago(metodoDePago);
+		
+		assertEquals(reserva.getMetodoDePago(), metodoDePago);
+		
+	}
+		
+	
 	
 	
 }

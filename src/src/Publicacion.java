@@ -59,8 +59,7 @@ public class Publicacion {
 	public Calendario getCalendario() {
 		return calendario;
 	}
-
-
+	
 	public List<Reserva> getReservas() {
 		return this.calendario.getReservas();
 	}
@@ -113,6 +112,13 @@ public class Publicacion {
 	public void setPoliticaDeCancelacion(PoliticaDeCancelacionDeReserva politicaDeCancelacion) {
 		this.politicaDeCancelacion = politicaDeCancelacion;
 	}
+	
+	
+
+	public PoliticaDeCancelacionDeReserva getPoliticaDeCancelacion() {
+		return politicaDeCancelacion;
+	}
+
 
 	public Propietario getPropietario() {
 		return this.propietario;
@@ -126,7 +132,7 @@ public class Publicacion {
 		return this.inmueble.getCiudad();
 	}
 
-	//probablemente va al calendario
+	
 	public Boolean checkDisponibilidadEntre(LocalDate fechaInicio, LocalDate fechaFin) {
 		return calendario.checkDisponibilidadEntre(fechaInicio, fechaFin);
 	}

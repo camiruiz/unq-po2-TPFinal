@@ -1,28 +1,37 @@
 package src;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class APP {
 	
-	private List<UsuarioInquilino> usuarios;
+	private List<Usuario> usuarios;
 	private List<String> tiposDeInmueble;
 	private List<String> servicios;
 	private List<String> categoriasDeInmueble;
 	private List<String> categoriasDePropietario;
 	private List<String> categoriasDeInquilino;
+	
 
-	public APP( List<UsuarioInquilino> usuarios,
+	public APP( List<Usuario> usuarios,
 				List<String> tiposDeInmueble,
 				List<String> servicios,
 				List<String> categoriasDeInmueble,
 				List<String> categoriasDePropietario,
 				List<String> categoriasDeInquilino) {
 				super();
+				
+				this.usuarios 					=  usuarios;
+				this.tiposDeInmueble 			= tiposDeInmueble;
+				this.servicios 					= servicios;
+				this.categoriasDeInmueble 		= categoriasDeInmueble;
+				this.categoriasDePropietario	= categoriasDePropietario;
+				this.categoriasDeInquilino 		= categoriasDeInquilino;
 	}
 
 	public void agregarCategoriaDeInmueble(String categoriaDeInmueble) {
-		categoriasDeInmueble.add(categoriaDeInmueble);
+		this.categoriasDeInmueble.add(categoriaDeInmueble);
 	}
 	
 
@@ -49,53 +58,40 @@ public class APP {
 	
 	
 	//Getters y Setter
-	public List<UsuarioInquilino> getUsuarios() {
+	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
 
-	public void setUsuarios(List<UsuarioInquilino> usuarios) {
-		this.usuarios = usuarios;
+	public void setUsuario(Usuario usuario) {
+		this.usuarios.add(usuario);
 	}
 
 	public List<String> getTiposDeInmueble() {
 		return tiposDeInmueble;
 	}
 
-	public void setTiposDeInmueble(List<String> tiposDeInmueble) {
-		this.tiposDeInmueble = tiposDeInmueble;
-	}
 
 	public List<String> getServicios() {
 		return servicios;
 	}
 
-	public void setServicios(List<String> servicios) {
-		this.servicios = servicios;
-	}
 
 	public List<String> getCategoriasDeInmueble() {
 		return categoriasDeInmueble;
 	}
 
-	public void setCategoriasDeInmueble(List<String> categoriasDeInmueble) {
-		this.categoriasDeInmueble = categoriasDeInmueble;
-	}
 
 	public List<String> getCategoriasDePropietario() {
 		return categoriasDePropietario;
 	}
 
-	public void setCategoriasDePropietario(List<String> categoriasDePropietario) {
-		this.categoriasDePropietario = categoriasDePropietario;
-	}
+	
 
 	public List<String> getCategoriasDeInquilino() {
 		return categoriasDeInquilino;
 	}
 
-	public void setCategoriasDeInquilino(List<String> categoriasDeInquilino) {
-		this.categoriasDeInquilino = categoriasDeInquilino;
-	}
+	
 	
 	
 	

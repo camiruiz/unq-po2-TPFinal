@@ -34,33 +34,13 @@ public class Reserva implements iPeriodoDeTiempo {
 	}
 
 
-
-
-	public void setFechaInicio(LocalDate fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
-
-
-
-
 	public void setFechaFin(LocalDate fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 
-
-
-
 	public void setMetodoDePago(String metodoDePago) {
 		this.metodoDePago = metodoDePago;
 	}
-
-
-
-
-	public void setPrecioTotal(Double precioTotal) {
-		this.precioTotal = precioTotal;
-	}
-
 
 
 

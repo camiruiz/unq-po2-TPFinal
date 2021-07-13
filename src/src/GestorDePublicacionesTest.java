@@ -13,33 +13,33 @@ import org.junit.jupiter.api.Test;
 
 class GestorDePublicacionesTest {
 	
-	GestorDePublicaciones GP;
-	UsuarioInquilino usuario1;
-	UsuarioInquilino usuario2;
-	Publicacion p1;
-	Publicacion p2;
-	Publicacion p3;
-	Publicacion p4;
-	Reserva r1;
-	Reserva r2;
-	Reserva r3;
-	Reserva r4;
-	ArrayList<Reserva> listaDeReservas;
-	ArrayList<Reserva> listaDeReservas2;
-	Calendario calendario;
-	Calendario calendario2;
-	LocalDate f1;
-	LocalDate f2;
-	LocalDate f3;
-	LocalDate f4;
-	ArrayList<Inmueble> listaDeInmuebles;
-	ArrayList<Inmueble> listaDeInmuebles2;
-	Inmueble inmueble1;
-	Inmueble inmueble2;
-	Inmueble inmueble3;
-	Inmueble inmueble4;
-	Propietario propietario1;
-	Propietario propietario2;
+	private GestorDePublicaciones GP;
+	private UsuarioInquilino usuario1;
+	private UsuarioInquilino usuario2;
+	private Publicacion p1;
+	private Publicacion p2;
+	private Publicacion p3;
+	private Publicacion p4;
+	private Reserva r1;
+	private Reserva r2;
+	private Reserva r3;
+	private Reserva r4;
+	private ArrayList<Reserva> listaDeReservas;
+	private ArrayList<Reserva> listaDeReservas2;
+	private Calendario calendario;
+	private Calendario calendario2;
+	private LocalDate f1;
+	private LocalDate f2;
+	private LocalDate f3;
+	private LocalDate f4;
+	private ArrayList<Inmueble> listaDeInmuebles;
+	private ArrayList<Inmueble> listaDeInmuebles2;
+	private Inmueble inmueble1;
+	private Inmueble inmueble2;
+	private Inmueble inmueble3;
+	private Inmueble inmueble4;
+	private Propietario propietario1;
+	private Propietario propietario2;
 	
 
 

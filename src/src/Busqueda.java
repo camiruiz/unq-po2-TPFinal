@@ -14,14 +14,18 @@ public class Busqueda {
 		this.filtros.add(filtro);
 	}
 	
+	public List<Filtro> getFiltros(){
+		return filtros;
+	}
+	
 	public List<Publicacion> buscar(List<Publicacion> ps) {
 		
 		List<Publicacion> publicaciones = ps;
-		filtros.stream().forEach(filtro -> asignar(publicaciones,filtro.filtrar(publicaciones)));
+		filtros.stream().forEach(filtro -> asignar(publicaciones,	filtro.filtrar(publicaciones)));
 		return publicaciones;
 	}
 	
-	private void asignar(List<Publicacion>p1,List<Publicacion>p2) {
+	public void asignar(List<Publicacion>p1,	List<Publicacion>p2) {
 		p1 = p2;
 	}
 }

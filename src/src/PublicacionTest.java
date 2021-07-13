@@ -5,7 +5,7 @@ import static org.mockito.Mockito.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,6 +19,7 @@ class PublicacionTest {
 	private Double					 		precioPorDia;
 	private Inmueble 						inmueble;
 	private Propietario 					propietario;
+	private UsuarioInquilino 				usuarioInquilino;
 	private CalculadorDeCalificaciones 		calculadorDeCalificaciones;
 	private PoliticaDeCancelacionDeReserva 	politicaDeCancelacion;
 	//private List<TemporadaAlta>		 		diasEnAumento;
@@ -44,6 +45,7 @@ class PublicacionTest {
 		calendario					= mock(Calendario.class);
 		reserva						= mock(Reserva.class);
 		listener					= mock(IListener.class);
+		usuarioInquilino			= mock(UsuarioInquilino.class);
 		
 		publicacion1 = new Publicacion(	checkInHorario, 
 										checkOutHorario,
@@ -177,6 +179,93 @@ class PublicacionTest {
 		 
 		 assertEquals(precioTotal, 96.0);
 	 }
+	 
+	 
+	 @Test
+	 void test014unaPublicacionSabeSuCalendario() {
+		 
+		 assertEquals(publicacion1.getCalendario(), calendario);
+	 }
+	 
+	 @Test
+	 void test0015unaPublicacionSabeSusReservas() {
+		 
+		 ArrayList<Reserva> listaDeReservas = new ArrayList<Reserva>();
+		 listaDeReservas.add(reserva);
+		 
+		 publicacion1.recibirReserva(reserva);
+		 
+		 
+		 verify(calendario, times(1)).addReserva(reserva);
+		
+	 }
+	 
+	 @Test
+	 void test015unaPublicacionSabeSuHorarioDeCheckIn() {
+		 publicacion1.setCheckInHorario(checkInHorario);
+		 
+		 assertEquals(publicacion1.getCheckInHorario(), checkInHorario);
+		 
+	 }
+	 
+	 @Test
+	 void test015unaPublicacionSabeSuHorarioDeCheckOut() {
+		 publicacion1.setCheckOutHorario(checkOutHorario);
+		 
+		 assertEquals(publicacion1.getCheckOutHorario(), checkOutHorario);
+		 
+	 }
+	 
+	 @Test
+	 void test015unaPublicacionSabeSuPrecioPorDia() {
+		 publicacion1.setPrecioPorDia(precioPorDia);
+		 
+		 assertEquals(publicacion1.getPrecioPorDia(), precioPorDia);
+		 
+	 }
+	 
+	 
+	 @Test
+	 void test016unaPublicacionSabeSuPoliticaDeCancelacion() {
+		 
+		 publicacion1.setPoliticaDeCancelacion(politicaDeCancelacion);
+		 
+		 assertEquals(publicacion1.getPoliticaDeCancelacion(), politicaDeCancelacion);
+	 }
+	 
+	 @Test
+	 void test017unaPublicacionConoceSuInmueble() {
+		 
+		 assertEquals(publicacion1.getInmueble(), inmueble); 
+	 }
+	 
+	 @Test
+	 void test018unaPublicacionSabeChequearUnaCiudad() {
+		 
+		 String ciudad = "CityOfAngels";
+		 
+		 when(inmueble.getCiudad()).thenReturn(ciudad);
+		 
+		 assertTrue(publicacion1.chequearCiudad(ciudad));
+	 }
+	 
+	/* @Test
+	 void test018unaPublicacionSabeSiElUsuarioTieneReserva() { 
+		 
+		 publicacion1.getReservas().add(reserva);
+		 calendario.addReserva(reserva);
+		 calendario.getReservas();
+		 when(reserva.compararInquilino(usuarioInquilino)).thenReturn(true);
+		 
+		 //verify(reserva, times(1)).compararInquilino(usuarioInquilino);
+		 
+		 assertTrue(publicacion1.chequearSiElUsuarioTieneReserva(usuarioInquilino));
+	 }*/
+	 
+	 //No puedo testear esto porque no me funca el publicacion1.recibirReserva(reserva);
+	 //Tuve el mismo problema al testear el numero 15 que es de get reservas, lo arregle con un verify de que al calendario le llega el mensaje, pero no
+	 //pude lograr que la publicacion me devuelva las reservas al usar get reservas.
+	 
 	 
 	 
 	 

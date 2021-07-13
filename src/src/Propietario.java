@@ -12,7 +12,9 @@ public class Propietario extends UsuarioInquilino {
 	// Constructor
 	public Propietario(String nombreCompleto, String email, String telefono, CalculadorDeCalificaciones calculadorDeCalificaciones, List<String> metodosDePago) {
 		super(nombreCompleto, email, telefono, calculadorDeCalificaciones);
-		this.metodosDePago = new ArrayList<String>(metodosDePago);
+		
+		this.metodosDePago = new ArrayList<String>();
+		this.solicitudes   = new ArrayList<Solicitud>();
 
 	}
 	
@@ -20,11 +22,15 @@ public class Propietario extends UsuarioInquilino {
 	public List<String> getMetodosDePago() {
 		return metodosDePago;
 	}
+	
+	
+	public List<Solicitud> getSolicitudes() {
+		return solicitudes;
+	}
 
 
-
-	public void setMetodosDePago(List<String> metodosDePago) {
-		this.metodosDePago = metodosDePago;
+	public void setMetodoDePago(String metodoDePago) {
+		this.metodosDePago.add(metodoDePago);
 	}
 
 

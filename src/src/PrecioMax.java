@@ -9,6 +9,7 @@ public class PrecioMax extends Filtro {
 
 	private Double precioMax;
 	static String tipo = "PrecioMax";
+	
 	public PrecioMax(Double precioMax) {
 		this.setTipo(tipo);
 		this.precioMax = precioMax;

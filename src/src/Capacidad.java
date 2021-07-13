@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Capacidad extends Filtro {
+	
 	private Integer capacidad;
 	static String tipo = "Capacidad";
+	
 	public Capacidad(Integer miCapacidad) {
 		this.setTipo(tipo);
 		capacidad = miCapacidad;

@@ -8,6 +8,7 @@ public class Ciudad extends Filtro {
 	
 	private String ciudad;
 	static String tipo = "Ciudad";
+	
 	public Ciudad(String ciudad) {
 		this.setTipo(tipo);
 		this.ciudad = ciudad;

@@ -7,8 +7,10 @@ import java.util.stream.Collectors;
 
 
 public class PrecioMin extends Filtro {
+	
 	private Double precioMin;
 	static String tipo = "PrecioMin";
+	
 	public PrecioMin(Double precioMin) {
 		this.setTipo(tipo);
 		this.precioMin = precioMin;

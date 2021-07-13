@@ -10,6 +10,7 @@ public class Disponibilidad extends Filtro {
 	private LocalDate fechaInicio;
 	private LocalDate fechaFin;
 	static String tipo = "Disponibilidad";
+	
 	public Disponibilidad(LocalDate fechaInicio, LocalDate fechaFin) {
 		this.setTipo(tipo);
 		this.fechaFin = fechaFin;

@@ -1,7 +1,5 @@
 package src;
 
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
 public class EstadoMitadDePago extends EstadoDeCancelacionIntermedia{
 

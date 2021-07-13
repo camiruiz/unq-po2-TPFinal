@@ -3,9 +3,9 @@ package src;
 public class Comentario {
 	
 	private String 	cuerpo;
-	private UsuarioInquilino usuario;
+	private Usuario usuario;
 	
-	public Comentario(String cuerpo, UsuarioInquilino usuario) {
+	public Comentario(String cuerpo, Usuario usuario) {
 		super();
 		this.cuerpo = cuerpo;
 		this.usuario = usuario;
@@ -19,11 +19,11 @@ public class Comentario {
 		this.cuerpo = cuerpo;
 	}
 
-	public UsuarioInquilino getUsuario() {
+	public Usuario getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(UsuarioInquilino usuario) {
+	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 	

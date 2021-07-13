@@ -32,7 +32,7 @@ class EstadoGratuitoTest {
 	@Test
 	void test001ElEstadoGratuitoSabeQueSiLaDiferenciaDeDiasEsMayorA20ElMontoEsDe0() {
 			
-		F1 = LocalDate.now();
+		F1 = LocalDate.now().plusDays(40);
 		
 		when(reserva1.getFechaInicio()).thenReturn(F1);
 		assertEquals(estadoGratuito.getMontoParaReserva(reserva1, cancelacionIntermedia1),0.0);

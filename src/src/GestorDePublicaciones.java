@@ -3,48 +3,43 @@ package src;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class GestorDePublicaciones {
 
 	private List<Publicacion> publicaciones;	
-	private static GestorDePublicaciones single_instance = null;
 	
-	private GestorDePublicaciones(){
+	
+	public GestorDePublicaciones(){
 		super();
-		this.publicaciones = new ArrayList<Publicacion> (publicaciones);
+		this.publicaciones = new ArrayList<Publicacion>();
 	}
-	
-	public static GestorDePublicaciones getInstance()
-	{
-	    if (single_instance == null)
-	        single_instance = new GestorDePublicaciones();
-
-	    return single_instance;
-	}
-	
-	
-	
+		
 	public List<Publicacion> getPublicaciones() {
 		return publicaciones;
 	}
 
-	public void setPublicaciones(List<Publicacion> publicaciones) {
-		this.publicaciones = publicaciones;
+	public void setPublicacion(Publicacion publicacion) {
+		this.publicaciones.add(publicacion);
+		
 	}
-	
 	
 	
 	public List<Reserva> getReservas(){
 		List<Reserva> listaDeReservas = new ArrayList<Reserva>();
-		this.publicaciones.stream().forEach(p -> listaDeReservas.addAll(p.getReservas()));
+		this.publicaciones.stream()
+							.forEach(p -> listaDeReservas.addAll(p.getReservas()));
+		
 		return listaDeReservas;
 	}
 	
 	
 	public List<Reserva> getReservasDeUsuario(UsuarioInquilino usuario){
-		List<Reserva> reservasDelUsuario = this.getReservas().stream().filter(r -> r.compararInquilino(usuario))
-				.collect(Collectors.toList());
+		List<Reserva> reservasDelUsuario = this.getReservas().stream()
+																.filter(r -> r.compararInquilino(usuario))
+																.collect(Collectors.toList());
+		
 		return reservasDelUsuario;
 	}
 	
@@ -52,35 +47,38 @@ public class GestorDePublicaciones {
 	public List<String> getCiudadesConReserva(UsuarioInquilino usuario){
 		List<String> ciudadesConReserva = new ArrayList<String>();
 				(this.publicaciones.stream()			
-				.filter(p -> p.chequearSiElUsuarioTieneReserva(usuario)))
-				.forEach(p -> ciudadesConReserva.add(p.getCiudad()));
+									.filter(p -> p.chequearSiElUsuarioTieneReserva(usuario)))
+									.forEach(p -> ciudadesConReserva.add(p.getCiudad()));
+				
 		return ciudadesConReserva;
 	}
 	
 	public List<Reserva> getReservasEnCiudad(String ciudad){
 		List<Reserva> reservasEnCiudad = new ArrayList<Reserva>();
 				(this.publicaciones.stream()			
-				.filter(p	-> p.chequearCiudad(ciudad)))
-				.forEach(p 	-> reservasEnCiudad.addAll(p.getReservas()));
+									.filter(p	-> p.chequearCiudad(ciudad)))
+									.forEach(p 	-> reservasEnCiudad.addAll(p.getReservas()));
+				
 		return reservasEnCiudad;
 	}
 	
 	public List<Reserva> getReservasFuturas(UsuarioInquilino usuario){
 		List<Reserva> reservasFuturas= new ArrayList<Reserva>();
 				(this.getReservas().stream()			
-				.filter(r	-> r.chequearSiEsFutura(usuario)))
-				.forEach(r 	-> reservasFuturas.add(r));
+									.filter(r	-> r.chequearSiEsFutura()))
+									.forEach(r 	-> reservasFuturas.add(r));
+				
 		return reservasFuturas;
 	}
 	
 	public List<UsuarioInquilino> getTopTenUsuarios(List<UsuarioInquilino> listaDeUsuarios){
 		List<UsuarioInquilino> topDeUsuarios = new ArrayList<UsuarioInquilino>();
-		topDeUsuarios.addAll(listaDeUsuarios);																						//Cargo todos los usuarios existentes en mi lista de "Top Usuarios"
+		topDeUsuarios.addAll(listaDeUsuarios);																						
 				(topDeUsuarios.stream()			
-				.sorted((u1, u2) -> this.getCantidadDeReservasDeUsuario(u1).compareTo(this.getCantidadDeReservasDeUsuario(u2)))		//Los ordeno de forma que el primer usuario es el que mas veces fue inquilino, de manera descendente.
-				//.sorted((u1, u2) -> this.getCantidadDeReservasDeUsuario(u2).compareTo(this.getCantidadDeReservasDeUsuario(u1)))
-				.limit(10))																											//Me quedo con los 10 primeros
-				.collect(Collectors.toList());
+								.sorted((u1, u2) -> this.getCantidadDeReservasDeUsuario(u2).compareTo(this.getCantidadDeReservasDeUsuario(u1)))
+								.limit(10))																											
+								.collect(Collectors.toList());
+				
 		return topDeUsuarios;
 	}
 
@@ -89,13 +87,24 @@ public class GestorDePublicaciones {
 		return this.getReservasDeUsuario(usuario).size();
 	}
 	
+	
 	public List<Inmueble> getInmueblesLibres(){
 		List<Inmueble> inmueblesLibres = new ArrayList<Inmueble>();
 				(this.publicaciones.stream()			
-				.filter(p	-> p.estaLibre()))           							//la publicacion debe implementar estaLibre o es trabajo del gestorDePublicaciones de hacerlo? La misma duda en un par de metodos mas abajo.
-				.forEach(p 	-> inmueblesLibres.add(p.getInmueble()));
+									.filter(p	-> this.estaLibre(p)))           							
+									.forEach(p 	-> inmueblesLibres.add(p.getInmueble()));
 		return inmueblesLibres;
 	}
+	
+	
+	public boolean estaLibre(Publicacion publicacion) {
+		
+		return (publicacion.getCalendario().checkDisponibilidadEntre(LocalDate.now(), LocalDate.now()));
+		
+	}
+	
+	
+	
 	
 	
 	public Float getTasaDeOcupacion(){
@@ -108,54 +117,53 @@ public class GestorDePublicaciones {
 	public List<Inmueble> getInmuebles() {
 		List<Inmueble> inmuebles = new ArrayList<Inmueble>();
 		this.publicaciones.stream()
-		.forEach(p -> inmuebles.add(p.getInmueble()));
+						  .forEach(p -> inmuebles.add(p.getInmueble()));	
+		
+		return inmuebles;
+		
 	}
 	
 	
 	public Integer getVecesQueAlquiloUnInmueble(Publicacion publicacion){
-		Integer vecesAlquilado = 0;
-		publicacion.getReservas().stream()
-		.filter(r -> r.seConcretoAnteriormente())  // si se concreto anteriormente es porque fue alquilado.
-		.forEach(r -> vecesAlquilado += 1);
-				
-		return vecesAlquilado;
+		
+		return publicacion.getReservas().stream()
+									.filter(r -> this.seConcretoAnteriormente(r))
+									.collect(Collectors.toList()).size();
+			
 	}
+
 	
-	//Que manera es mejor para resolver este ejercicio? Que la reserva sea la responsable de implementar el mensaje seConcretoAnteriormente() como esta hecho arriba en el metodo que no esta comentado
-	//O hacer que el GestorDePublicaciones sea el encargado de implementar el mensaje y saber si una reserva se concreto anteriormente.
-	/*
-	public Integer getVecesQueAlquiloUnInmueble(Publicacion publicacion){
-		Integer vecesAlquilado = 0;
-		publicacion.getReservas().stream()
-		.filter(r -> this.seConcretoAnteriormente(r))  // Aca es la diferencia
-		.forEach(r -> vecesAlquilado += 1);
-				
-		return vecesAlquilado;
-	}
-	
-	private Boolean seContreroAnteriormente(Reserva reserva){
+	public Boolean seConcretoAnteriormente(Reserva reserva){
 		return reserva.getFechaInicio().isBefore(LocalDate.now());
 		
-	}*/
+	}
+	
+
 	
 	
 	public Integer getVecesQueAlquiloTodosSusInmuebles(Propietario propietario){
-		Integer vecesQueAlquiloTotal = 0;
-		this.getPublicacionesDeUsuario(propietario).stream()
-		.forEach(p -> vecesQueAlquiloTotal += (this.getVecesQueAlquiloUnInmueble(p)));
-				
-		return vecesQueAlquiloTotal;
-	}
 	
+		return this.getPublicacionesDeUsuario(propietario).stream()
+															.mapToInt(p -> this.getVecesQueAlquiloUnInmueble(p))
+															.sum();
+	}
+
+
+	
+
 	public List<Publicacion> getPublicacionesDeUsuario(Propietario propietario){
 		List<Publicacion> publicacionesDelUsuario = this.publicaciones.stream().filter(p -> this.compararUsuario(propietario, p))
 				.collect(Collectors.toList());
 		return publicacionesDelUsuario;
 	}
+	
+	
 
-	private Boolean compararUsuario(Propietario propietario, Publicacion p) {
-		return p.getPropietario().equals(propietario);	
+	public Boolean compararUsuario(Propietario propietario, Publicacion publicacion) {
+		return publicacion.getPropietario().equals(propietario);	
 	}
+
+
 	
 	
 	

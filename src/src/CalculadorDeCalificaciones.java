@@ -18,17 +18,13 @@ public class CalculadorDeCalificaciones {
 		return listaDePuntajes;
 	}
 
-	public void setListaDePuntajes(List<Calificacion> listaDePuntajes) {
-		this.listaDePuntajes = listaDePuntajes;
-	}
+
 
 	public List<Comentario> getListaDeComentarios() {
 		return listaDeComentarios;
 	}
 
-	public void setListaDeComentarios(List<Comentario> listaDeComentarios) {
-		this.listaDeComentarios = listaDeComentarios;
-	}
+	
 
 	public float calcularPromedio() {
 		float total = 0;
@@ -41,7 +37,7 @@ public class CalculadorDeCalificaciones {
 		public Integer puntajeTotal() {
 			Integer valor = this.listaDePuntajes.stream().mapToInt(Calificacion::getCalificacion).sum();
 			return valor;
-			//Integer valor = this.listaDePuntajes.stream().mapToInt(Calificacion::getCalificacion).average(); Al momento de testear esto ver q devuelve el average xd
+
 		}
 
 	public void agregarPuntaje(Calificacion calificacion) {

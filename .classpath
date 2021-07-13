@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="C:/Facultad/eclipse/mock/byte-buddy-1.10.18.jar"/>
-	<classpathentry kind="lib" path="C:/Facultad/eclipse/mock/byte-buddy-agent-1.10.15.jar"/>
-	<classpathentry kind="lib" path="C:/Facultad/eclipse/mock/mockito-core-3.6.0.jar"/>
-	<classpathentry kind="lib" path="C:/Facultad/eclipse/mock/mockito-inline-3.6.0.jar"/>
-	<classpathentry kind="lib" path="C:/Facultad/eclipse/mock/objenesis-3.1.jar"/>
+	<classpathentry kind="src" path="src">
+		<attributes>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/coNi/Desktop/mokitoo/byte-buddy-1.10.18.jar"/>
+	<classpathentry kind="lib" path="C:/Users/coNi/Desktop/mokitoo/byte-buddy-agent-1.10.15.jar"/>
+	<classpathentry kind="lib" path="C:/Users/coNi/Desktop/mokitoo/mockito-core-3.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/coNi/Desktop/mokitoo/mockito-inline-3.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/coNi/Desktop/mokitoo/objenesis-3.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

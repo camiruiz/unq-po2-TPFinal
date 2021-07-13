@@ -54,6 +54,12 @@ public class Publicacion {
 		return precioActual;
 	}
 	
+	
+	
+	public Calendario getCalendario() {
+		return calendario;
+	}
+
 
 	public List<Reserva> getReservas() {
 		return this.calendario.getReservas();
@@ -172,6 +178,9 @@ public class Publicacion {
 	public Boolean chequearCiudad(String ciudad) {
 		return this.inmueble.getCiudad().equals(ciudad);
 	}
+
+
+	
 
 
 }

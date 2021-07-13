@@ -1,10 +1,6 @@
 package src;
 
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
-import src.Publicacion;
-import src.Reserva;
 
 public class EstadoGratuito extends EstadoDeCancelacionIntermedia {
 

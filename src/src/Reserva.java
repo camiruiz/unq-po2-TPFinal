@@ -27,6 +27,43 @@ public class Reserva implements iPeriodoDeTiempo {
 	}
 	
 	
+	
+	
+	public void setInquilino(UsuarioInquilino inquilino) {
+		this.inquilino = inquilino;
+	}
+
+
+
+
+	public void setFechaInicio(LocalDate fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+
+
+
+
+	public void setFechaFin(LocalDate fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+
+
+
+
+	public void setMetodoDePago(String metodoDePago) {
+		this.metodoDePago = metodoDePago;
+	}
+
+
+
+
+	public void setPrecioTotal(Double precioTotal) {
+		this.precioTotal = precioTotal;
+	}
+
+
+
+
 	public UsuarioInquilino getInquilino() {
 		return this.inquilino;
 		
@@ -49,7 +86,7 @@ public class Reserva implements iPeriodoDeTiempo {
 	}
 
 
-	public Boolean chequearSiEsFutura(UsuarioInquilino usuario) {
+	public Boolean chequearSiEsFutura() {
 		return this.fechaInicio.isAfter(LocalDate.now());
 	}
 

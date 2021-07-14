@@ -21,7 +21,9 @@ public class Busqueda {
 	public List<Publicacion> buscar(List<Publicacion> ps) {
 		
 		List<Publicacion> publicaciones = ps;
-		filtros.stream().forEach(filtro -> asignar(publicaciones,	filtro.filtrar(publicaciones)));
+		for (Filtro filtro: filtros) {
+			publicaciones = filtro.filtrar(publicaciones);
+		}
 		return publicaciones;
 	}
 	

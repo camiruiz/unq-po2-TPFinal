@@ -55,18 +55,7 @@ class BusquedaTest {
 		
 	}
 	
-	@Test
-	void test002UnaBusquedaSabeAsignarUnaListaDePublicacionesAOtra() {
-		
-		listaDePublicaciones1.add(p1);
-		listaDePublicaciones2.add(p2);
-		assertNotEquals(listaDePublicaciones1, listaDePublicaciones2);
-		
-		busqueda.asignar(listaDePublicaciones1, listaDePublicaciones2);
-		
-		//assertEquals(listaDePublicaciones1, listaDePublicaciones2);
-		//Este falta ver q quisite hacer con el asignar, yo entiendo que la listaDePub1 pasa a ser igual a la 2, igual no me corre;
-	}
+	
 	
 
 }

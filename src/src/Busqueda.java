@@ -26,8 +26,4 @@ public class Busqueda {
 		}
 		return publicaciones;
 	}
-	
-	public void asignar(List<Publicacion>p1,	List<Publicacion>p2) {
-		p1 = p2;
-	}
 }

@@ -12,5 +12,10 @@
 	<classpathentry kind="lib" path="C:/Users/Cami/Desktop/OBJETOS 2/Mockito/mockito-core-3.6.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Cami/Desktop/OBJETOS 2/Mockito/mockito-inline-3.6.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Cami/Desktop/OBJETOS 2/Mockito/objenesis-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Facultad/eclipse/mock/byte-buddy-1.10.18.jar"/>
+	<classpathentry kind="lib" path="C:/Facultad/eclipse/mock/byte-buddy-agent-1.10.15.jar"/>
+	<classpathentry kind="lib" path="C:/Facultad/eclipse/mock/mockito-core-3.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Facultad/eclipse/mock/mockito-inline-3.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Facultad/eclipse/mock/objenesis-3.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

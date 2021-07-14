@@ -1,7 +1,10 @@
 package src;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Propietario extends UsuarioInquilino {
 	
@@ -45,6 +48,17 @@ public class Propietario extends UsuarioInquilino {
 		
 	}
 
+	public List<Solicitud> solicitudesDePublicacion(Publicacion publicacion){
+		List<Solicitud> solicitudesDePublicacion = this.solicitudes.stream().filter(solicitud -> solicitud.esDePublicacion(publicacion)).collect(Collectors.toList());
+		return(solicitudesDePublicacion);
+	}
 	
+	public void aceptarSolicitudPorCancelacionEntre_Para(LocalDate fechaInicio, LocalDate fechaFin, Publicacion publicacion) {
+		List<Solicitud> solicitudesDePublicacion = this.solicitudesDePublicacion(publicacion);
+		Optional<Solicitud> solicitudOptional = solicitudesDePublicacion.stream().filter(solicitud -> solicitud.estaPendienteYEntreFechasPara(fechaInicio,fechaFin)).findFirst();
+		if(solicitudOptional.isPresent()) {
+			solicitudOptional.get().aceptar();
+		}	
+	}
 	
 }

@@ -16,6 +16,7 @@ public class GestorDePublicaciones {
 		this.publicaciones = new ArrayList<Publicacion>();
 	}
 		
+	
 	public List<Publicacion> getPublicaciones() {
 		return publicaciones;
 	}
@@ -49,7 +50,6 @@ public class GestorDePublicaciones {
 				(this.publicaciones.stream()			
 									.filter(p -> p.chequearSiElUsuarioTieneReserva(usuario)))
 									.forEach(p -> ciudadesConReserva.add(p.getCiudad()));
-				
 		return ciudadesConReserva;
 	}
 	

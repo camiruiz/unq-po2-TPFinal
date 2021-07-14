@@ -50,13 +50,7 @@ public class Calendario {
 	}
 
 	public Double calcularAumentoEntre(LocalDate fechaInicio, LocalDate fechaFin) {
-		/*
-		Double totalAumento = 0.0;
-		this.diasEnAumento.stream().forEach(temporadaAlta ->
-											totalAumento += (temporadaAlta.aumentoParaDiasEntreFechas(
-																	fechaInicio,
-																	fechaFin)));
-		*/
+		
 		Double totalAumento = 0.0;
 		for (TemporadaAlta temporadaAlta : this.diasEnAumento) {
             totalAumento += temporadaAlta.aumentoParaDiasEntreFechas(fechaInicio, fechaFin);

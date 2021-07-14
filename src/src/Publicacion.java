@@ -149,6 +149,16 @@ public class Publicacion {
 	public void cancelarReserva(Reserva reserva) {
 		this.notificarPorCancelacion(reserva);
 		this.calendario.sacarReserva(reserva);
+		this.reservaPorCancelacionDe(reserva);
+	}
+
+
+	private void reservaPorCancelacionDe(Reserva reserva) {
+		LocalDate fechaInicio = reserva.getFechaInicio();
+		LocalDate fechaFin    = reserva.getFechaFin();
+		
+		this.propietario.aceptarSolicitudPorCancelacionEntre_Para(fechaInicio, fechaFin, this);
+		
 	}
 
 

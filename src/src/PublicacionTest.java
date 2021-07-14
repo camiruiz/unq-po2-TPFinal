@@ -6,6 +6,7 @@ import static org.mockito.Mockito.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -192,12 +193,10 @@ class PublicacionTest {
 		 
 		 ArrayList<Reserva> listaDeReservas = new ArrayList<Reserva>();
 		 listaDeReservas.add(reserva);
-		 
 		 publicacion1.recibirReserva(reserva);
-		 
-		 
+		 when(calendario.getReservas()).thenReturn(listaDeReservas);
 		 verify(calendario, times(1)).addReserva(reserva);
-		
+		 assertTrue(publicacion1.getReservas().contains(reserva));
 	 }
 	 
 	 @Test
@@ -249,29 +248,22 @@ class PublicacionTest {
 		 assertTrue(publicacion1.chequearCiudad(ciudad));
 	 }
 	 
-	/* @Test
+	@Test
 	 void test018unaPublicacionSabeSiElUsuarioTieneReserva() { 
 		 
-		 publicacion1.getReservas().add(reserva);
-		 calendario.addReserva(reserva);
-		 calendario.getReservas();
+		 List<Reserva> listaDeReservas = new ArrayList<Reserva>();
+		 listaDeReservas.add(reserva);
+		
+		 when(calendario.getReservas()).thenReturn(listaDeReservas);
 		 when(reserva.compararInquilino(usuarioInquilino)).thenReturn(true);
 		 
-		 //verify(reserva, times(1)).compararInquilino(usuarioInquilino);
+		 publicacion1.recibirReserva(reserva);
+		 Boolean tieneReserva = publicacion1.chequearSiElUsuarioTieneReserva(usuarioInquilino);
 		 
-		 assertTrue(publicacion1.chequearSiElUsuarioTieneReserva(usuarioInquilino));
-	 }*/
-	 
-	 //No puedo testear esto porque no me funca el publicacion1.recibirReserva(reserva);
-	 //Tuve el mismo problema al testear el numero 15 que es de get reservas, lo arregle con un verify de que al calendario le llega el mensaje, pero no
-	 //pude lograr que la publicacion me devuelva las reservas al usar get reservas.
-	 
-	 
-	 
-	 
-	
-	 
-	 
+		 assertTrue(tieneReserva);
+		 verify(reserva, times(1)).compararInquilino(usuarioInquilino);
+	 }
+	 	
 	 
 }
 

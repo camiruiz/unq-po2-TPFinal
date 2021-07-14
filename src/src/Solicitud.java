@@ -41,7 +41,7 @@ public class Solicitud {
 	}
 	
 	public void aceptar() {
-		Reserva reserva = this.generarReserva(); //genera acoplamiento pero el modelo lo pide
+		Reserva reserva = this.generarReserva();
 		this.darReservaALaPublicacion(reserva);
 	}
 
@@ -79,6 +79,16 @@ public class Solicitud {
 	
 	public void tuEstadoEs(EstadosDeSolicitudDeReserva estado) {
 		estadoDeSolicitudDeReserva = estado;
+	}
+
+
+	public Boolean estaPendienteYEntreFechasPara(LocalDate fechaInicio, LocalDate fechaFin) {
+		return this.estadoDeSolicitudDeReserva.esPendienteYEstaDisponibleEntreFechas(fechaInicio, fechaFin, this);
+	}
+
+
+	public Boolean esDePublicacion(Publicacion publicacion) {
+		return this.publicacion.equals(publicacion);
 	}
 	
 }

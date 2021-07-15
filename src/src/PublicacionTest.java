@@ -15,18 +15,18 @@ import org.junit.jupiter.api.Test;
 class PublicacionTest {
 
 	
-	private LocalTime 						checkInHorario;
-	private LocalTime						checkOutHorario;
-	private Double					 		precioPorDia;
-	private Inmueble 						inmueble;
-	private Propietario 					propietario;
-	private UsuarioInquilino 				usuarioInquilino;
-	private CalculadorDeCalificaciones 		calculadorDeCalificaciones;
-	private PoliticaDeCancelacionDeReserva 	politicaDeCancelacion;
-	//private List<TemporadaAlta>		 		diasEnAumento;
-	private Reserva							reserva;
-	private Calendario 						calendario;
-	private IListener						listener;
+	LocalTime 						checkInHorario;
+	LocalTime						checkOutHorario;
+	Double					 		precioPorDia;
+	Inmueble 						inmueble;
+	Propietario 					propietario;
+	UsuarioInquilino 				usuarioInquilino;
+	CalculadorDeCalificaciones 		calculadorDeCalificaciones;
+	PoliticaDeCancelacionDeReserva 	politicaDeCancelacion;
+	Reserva							reserva;
+	Calendario 						calendario;
+	IListener						listener;
+	IListener						listener2;
 	
 	Publicacion publicacion1;
 	
@@ -37,8 +37,7 @@ class PublicacionTest {
 		
 		checkInHorario 				= mock(LocalTime.class);             
 		checkOutHorario				= mock(LocalTime.class);            
-		precioPorDia				= 12.0;               
-		//reservas					= mock(List.class);                               
+		precioPorDia				= 12.0;                                            
 		inmueble					= mock(Inmueble.class);                   
 		propietario					= mock(Propietario.class);      
 		calculadorDeCalificaciones 	= mock(CalculadorDeCalificaciones.class);                
@@ -46,6 +45,7 @@ class PublicacionTest {
 		calendario					= mock(Calendario.class);
 		reserva						= mock(Reserva.class);
 		listener					= mock(IListener.class);
+		listener2					= mock(IListener.class);
 		usuarioInquilino			= mock(UsuarioInquilino.class);
 		
 		publicacion1 = new Publicacion(	checkInHorario, 
@@ -62,9 +62,13 @@ class PublicacionTest {
 	void test001unListenerRecibeLaNotificacionSiSeSubstribeAUnaPublicacionPorCancelacion() {
 		publicacion1.recibirReserva(reserva);
 		publicacion1.attachListener(listener);
-		publicacion1.cancelarReserva(reserva);
+		publicacion1.attachListener(listener2);
+		publicacion1.detachListener(listener2);
 		
+		publicacion1.cancelarReserva(reserva);
+
 		verify(listener, times(1)).notificarPorCancelacion(publicacion1, reserva);
+		verify(listener2, times(0)).notificarPorCancelacion(publicacion1, reserva);
 		verify(calendario, times(1)).addReserva(reserva);
 	}
 	

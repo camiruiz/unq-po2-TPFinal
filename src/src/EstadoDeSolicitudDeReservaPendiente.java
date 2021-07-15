@@ -9,29 +9,36 @@ public class EstadoDeSolicitudDeReservaPendiente extends EstadosDeSolicitudDeRes
 	
 	@Override
 	public void aceptar(Solicitud solicitud) {
-		solicitud.aceptar();
+		Reserva reserva = solicitud.generarReserva();
+		solicitud.darReservaALaPublicacion(reserva);
 		solicitud.tuEstadoEs(new EstadoDeSolicitudDeReservaPendiente());
 	}
 	
 	
 	@Override
 	public void rechazar(Solicitud solicitud) {
-		solicitud.rechazar();
 		solicitud.tuEstadoEs(new EstadoDeSolicitudDeReservaRechazado());
 
 	}
 	
 	public Boolean esPendienteYEstaDisponibleEntreFechas(LocalDate fechaInicio, LocalDate fechaFin, Solicitud solicitud) {
-		List<LocalDate> diasDeMiPeriodo = solicitud.getFechaInicio().datesUntil(solicitud.getFechaFin()).collect(Collectors.toList());
+		LocalDate fechaInicioDeSolicitud = solicitud.getFechaInicio();
+		LocalDate fechaFinDeSolicitud = solicitud.getFechaFin();
+		
+		
+		List<LocalDate> diasDeMiPeriodo = fechaInicioDeSolicitud.datesUntil(fechaFinDeSolicitud).collect(Collectors.toList());
 		Boolean laSolicitudEstaEntreFechas = laSolicitudEstaEntreFechas(fechaInicio, fechaFin, diasDeMiPeriodo);
 		
 		
-		return laSolicitudEstaEntreFechas && solicitud.getPublicacion().checkDisponibilidadEntre(fechaInicio, fechaFin);
+		return laSolicitudEstaEntreFechas && solicitud.getPublicacion().checkDisponibilidadEntre(fechaInicioDeSolicitud, fechaFinDeSolicitud);
 	}
 
 
 	private boolean laSolicitudEstaEntreFechas(LocalDate fechaInicio, LocalDate fechaFin, List<LocalDate> diasDeMiPeriodo) {
-		return diasDeMiPeriodo.contains(fechaInicio) || diasDeMiPeriodo.contains(fechaFin);
+		List<LocalDate> diasDeMiPeriodo2 = fechaInicio.datesUntil(fechaFin).collect(Collectors.toList());
+		Boolean estaEntreFechas = diasDeMiPeriodo2.stream().anyMatch(dia -> diasDeMiPeriodo.contains(dia));
+		return estaEntreFechas;
+		///return diasDeMiPeriodo.contains(fechaInicio) || diasDeMiPeriodo.contains(fechaFin);
 	}
 	
 	

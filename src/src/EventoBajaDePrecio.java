@@ -12,7 +12,7 @@ public class EventoBajaDePrecio extends Evento {
 	}
 
 	@Override
-	public void notificarPorCancelacion(Publicacion publicacion, Reserva reserva) {
+	public void notificarPorBajaDePrecio(Publicacion publicacion) {
 		listaANotificar.stream().forEach(notificablePorBajaDePrecio -> notificablePorBajaDePrecio.serNotificadoPorBajaDePrecio(publicacion));
 		
 	}

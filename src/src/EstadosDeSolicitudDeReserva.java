@@ -11,7 +11,6 @@ public abstract class EstadosDeSolicitudDeReserva {
 
 
 	public Boolean esPendienteYEstaDisponibleEntreFechas(LocalDate fechaInicio, LocalDate fechaFin, Solicitud solicitud) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 		

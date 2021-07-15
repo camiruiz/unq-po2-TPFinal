@@ -2,6 +2,7 @@ package src;
 
 public abstract class Evento implements IListener {
 
+	
 	@Override
 	public void notificarPorCancelacion(Publicacion publicacion, Reserva reserva) {
 		// TODO Auto-generated method stub

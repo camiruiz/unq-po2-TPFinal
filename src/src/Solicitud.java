@@ -32,7 +32,7 @@ public class Solicitud {
 	}
 	
 
-	private Reserva generarReserva() {
+	public Reserva generarReserva() {
 		return new Reserva(this.inquilino,
 							this.fechaInicio, 
 							this.fechaFin, 
@@ -41,20 +41,15 @@ public class Solicitud {
 	}
 	
 	public void aceptar() {
-		Reserva reserva = this.generarReserva();
-		this.darReservaALaPublicacion(reserva);
+		this.estadoDeSolicitudDeReserva.aceptar(this);
 	}
 
 	public void darReservaALaPublicacion(Reserva reserva) {
 		publicacion.recibirReserva(reserva);
 	}
 
-	public void sacarSolicitudAlPropietario() {
-		this.sacarSolicitudAlPropietario();
-	}
-	
 	public void rechazar() {
-		this.publicacion.getPropietario().sacarSolicitud(this);
+		this.estadoDeSolicitudDeReserva.rechazar(this);
 	}
 
 	public UsuarioInquilino getInquilino() {

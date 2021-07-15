@@ -1,8 +1,11 @@
 package src;
 
-import static org.mockito.Mockito.mock;
+import static org.junit.Assert.assertFalse;
+import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+
+import java.time.LocalDate;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,15 +15,20 @@ class EstadoDeSolicitudDeReservaRechazadoTest {
 
     private Solicitud solicitud1;
     private EstadoDeSolicitudDeReservaRechazado estadoDeSolicitudDeReservaRechazado;
+	LocalDate 		fechaInicio1;
+	LocalDate 		fechaFin1;
 
 
 
     @BeforeEach
     void setUp() throws Exception {
 
-    solicitud1 = mock(Solicitud.class);
+    	solicitud1 		= mock(Solicitud.class);
+		fechaInicio1 	= LocalDate.now().plusDays(-10);
+		fechaFin1 		= LocalDate.now().plusDays(-6);
 	    estadoDeSolicitudDeReservaRechazado = new EstadoDeSolicitudDeReservaRechazado();
-	    }
+	    
+    }
 
 
     @Test
@@ -42,9 +50,12 @@ class EstadoDeSolicitudDeReservaRechazadoTest {
         estadoDeSolicitudDeReservaRechazado.rechazar(solicitud1);
 
         verify(solicitud1, times(0)).rechazar();
+    }
 
-
-
+    @Test
+    void test003MiEstadoDeSolicitudDeReservaRechazadoDevuelveFalseAlPreguntarSiEsPendiente(){
+    	
+    	assertFalse(estadoDeSolicitudDeReservaRechazado.esPendienteYEstaDisponibleEntreFechas(fechaInicio1, fechaFin1, solicitud1));
     }
 }
 

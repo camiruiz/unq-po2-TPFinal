@@ -16,12 +16,6 @@ public abstract class Filtro {
 		this.tipo = tipo;
 	}
 	
-	protected void agregarSiDebo(Publicacion p, List<Publicacion> listaActual,Boolean condicion) {
-		if(condicion) {
-			listaActual.add(p);
-		}
-	}
-	
 	@Override
 	public boolean equals(Object o){
 		return o.getClass() == this.getClass();

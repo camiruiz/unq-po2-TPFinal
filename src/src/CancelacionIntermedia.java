@@ -17,7 +17,7 @@ public class CancelacionIntermedia extends PoliticaDeCancelacionDeReserva{
 	
 	}
 	
-	void tuEstadoEs(EstadoDeCancelacionIntermedia estado) {
+	public void tuEstadoEs(EstadoDeCancelacionIntermedia estado) {
 		this.estado = estado;
 	}
 	

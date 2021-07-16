@@ -9,11 +9,11 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.CalculadorDeCalificaciones;
-import src.Calificacion;
-import src.Comentario;
-import src.Usuario;
-import src.UsuarioInquilino;
+import calculadorDeCalificaciones.CalculadorDeCalificaciones;
+import calculadorDeCalificaciones.Calificacion;
+import calculadorDeCalificaciones.Comentario;
+import usuarios.Usuario;
+import usuarios.UsuarioInquilino;
 
 class UsuarioTest {
 	

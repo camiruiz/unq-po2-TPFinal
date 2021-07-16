@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.CalculadorDeCalificaciones;
-import src.Calificacion;
-import src.Comentario;
+import calculadorDeCalificaciones.CalculadorDeCalificaciones;
+import calculadorDeCalificaciones.Calificacion;
+import calculadorDeCalificaciones.Comentario;
 
 class CalculadorDeCalificacionesTest {
 	

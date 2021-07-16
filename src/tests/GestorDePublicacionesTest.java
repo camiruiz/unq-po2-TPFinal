@@ -11,12 +11,15 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.Calendario;
-import src.GestorDePublicaciones;
-import src.Publicacion;
-import src.Reserva;
-import src.UsuarioInquilino;
-import src.*;
+import app.*;
+import filtros.Filtro;
+import publicacionesYBusquedas.Calendario;
+import publicacionesYBusquedas.GestorDePublicaciones;
+import publicacionesYBusquedas.Inmueble;
+import publicacionesYBusquedas.Publicacion;
+import publicacionesYBusquedas.Reserva;
+import usuarios.Propietario;
+import usuarios.UsuarioInquilino;
 
 class GestorDePublicacionesTest {
 	

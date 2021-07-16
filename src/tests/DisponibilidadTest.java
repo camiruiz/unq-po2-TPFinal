@@ -13,8 +13,8 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.Disponibilidad;
-import src.Publicacion;
+import filtros.Disponibilidad;
+import publicacionesYBusquedas.Publicacion;
 
 class DisponibilidadTest {
 	

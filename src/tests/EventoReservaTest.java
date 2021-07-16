@@ -8,10 +8,10 @@ import static org.mockito.Mockito.verify;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.EventoReserva;
-import src.INotificablePorReserva;
-import src.Publicacion;
-import src.Reserva;
+import notificaciones.EventoReserva;
+import notificaciones.INotificablePorReserva;
+import publicacionesYBusquedas.Publicacion;
+import publicacionesYBusquedas.Reserva;
 
 class EventoReservaTest {
 

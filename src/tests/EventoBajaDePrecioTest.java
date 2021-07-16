@@ -6,10 +6,10 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.EventoBajaDePrecio;
-import src.IBajaDePrecio;
-import src.Publicacion;
-import src.Reserva;
+import notificaciones.EventoBajaDePrecio;
+import notificaciones.IBajaDePrecio;
+import publicacionesYBusquedas.Publicacion;
+import publicacionesYBusquedas.Reserva;
 
 class EventoBajaDePrecioTest {
 

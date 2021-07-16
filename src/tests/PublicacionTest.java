@@ -10,7 +10,20 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import src.*;
+
+import app.*;
+import calculadorDeCalificaciones.CalculadorDeCalificaciones;
+import calculadorDeCalificaciones.Calificacion;
+import notificaciones.IListener;
+import politicasDeCancelacion.PoliticaDeCancelacionDeReserva;
+import publicacionesYBusquedas.Calendario;
+import publicacionesYBusquedas.Inmueble;
+import publicacionesYBusquedas.Publicacion;
+import publicacionesYBusquedas.Reserva;
+import publicacionesYBusquedas.TemporadaAlta;
+import solicitud.Solicitud;
+import usuarios.Propietario;
+import usuarios.UsuarioInquilino;
 
 
 class PublicacionTest {

@@ -9,8 +9,8 @@ import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.Reserva;
-import src.SinCancelacion;
+import politicasDeCancelacion.SinCancelacion;
+import publicacionesYBusquedas.Reserva;
 
 class SinCancelacionTest {
 

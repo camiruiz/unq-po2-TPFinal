@@ -10,9 +10,9 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.Capacidad;
-import src.Ciudad;
-import src.Publicacion;
+import filtros.Capacidad;
+import filtros.Ciudad;
+import publicacionesYBusquedas.Publicacion;
 
 class CapacidadTest {
 	

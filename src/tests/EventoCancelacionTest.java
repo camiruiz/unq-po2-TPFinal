@@ -5,10 +5,10 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.EventoCancelacion;
-import src.ICancelable;
-import src.Publicacion;
-import src.Reserva;
+import notificaciones.EventoCancelacion;
+import notificaciones.ICancelable;
+import publicacionesYBusquedas.Publicacion;
+import publicacionesYBusquedas.Reserva;
 
 class EventoCancelacionTest {
 

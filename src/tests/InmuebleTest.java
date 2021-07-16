@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.Inmueble;
+import publicacionesYBusquedas.Inmueble;
 
 class InmuebleTest {
 	

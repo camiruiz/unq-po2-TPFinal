@@ -11,8 +11,8 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.CancelacionBasica;
-import src.Reserva;
+import politicasDeCancelacion.CancelacionBasica;
+import publicacionesYBusquedas.Reserva;
 
 class CancelacionBasicaTest {
 	

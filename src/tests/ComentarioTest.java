@@ -7,8 +7,8 @@ import static org.mockito.Mockito.mock;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.Comentario;
-import src.Usuario;
+import calculadorDeCalificaciones.Comentario;
+import usuarios.Usuario;
 
 class ComentarioTest  {
 

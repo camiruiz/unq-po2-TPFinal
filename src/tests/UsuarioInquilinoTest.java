@@ -7,11 +7,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.CalculadorDeCalificaciones;
-import src.Propietario;
-import src.Publicacion;
-import src.Solicitud;
-import src.UsuarioInquilino;
+import calculadorDeCalificaciones.CalculadorDeCalificaciones;
+import publicacionesYBusquedas.Publicacion;
+import solicitud.Solicitud;
+import usuarios.Propietario;
+import usuarios.UsuarioInquilino;
 
 class UsuarioInquilinoTest {
 	

@@ -10,9 +10,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.APP;
-import src.Usuario;
-import src.UsuarioInquilino;
+import app.APP;
+import usuarios.Usuario;
+import usuarios.UsuarioInquilino;
 
 class APPTest {
 	

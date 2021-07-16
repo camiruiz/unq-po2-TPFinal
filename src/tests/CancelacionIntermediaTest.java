@@ -9,10 +9,10 @@ import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.CancelacionIntermedia;
-import src.EstadoDeCancelacionIntermedia;
-import src.*;
-import src.Reserva;
+import app.*;
+import politicasDeCancelacion.CancelacionIntermedia;
+import politicasDeCancelacion.EstadoDeCancelacionIntermedia;
+import publicacionesYBusquedas.Reserva;
 
 class CancelacionIntermediaTest {
 

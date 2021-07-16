@@ -10,13 +10,13 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.Busqueda;
-import src.Capacidad;
-import src.Ciudad;
-import src.Disponibilidad;
-import src.PrecioMax;
-import src.PrecioMin;
-import src.Publicacion;
+import filtros.Capacidad;
+import filtros.Ciudad;
+import filtros.Disponibilidad;
+import filtros.PrecioMax;
+import filtros.PrecioMin;
+import publicacionesYBusquedas.Busqueda;
+import publicacionesYBusquedas.Publicacion;
 
 class BusquedaTest {
 	

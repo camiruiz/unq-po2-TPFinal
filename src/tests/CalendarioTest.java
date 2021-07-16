@@ -9,9 +9,10 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.Reserva;
-import src.*;
-import src.TemporadaAlta;
+import app.*;
+import publicacionesYBusquedas.Calendario;
+import publicacionesYBusquedas.Reserva;
+import publicacionesYBusquedas.TemporadaAlta;
 
 class CalendarioTest {
 

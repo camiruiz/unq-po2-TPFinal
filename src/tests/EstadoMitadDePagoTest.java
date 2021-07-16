@@ -11,9 +11,9 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.CancelacionIntermedia;
-import src.EstadoMitadDePago;
-import src.Reserva;
+import politicasDeCancelacion.CancelacionIntermedia;
+import politicasDeCancelacion.EstadoMitadDePago;
+import publicacionesYBusquedas.Reserva;
 
 class EstadoMitadDePagoTest {
 

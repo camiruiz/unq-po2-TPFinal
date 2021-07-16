@@ -9,9 +9,11 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.EstadoDeSolicitudDeReservaPendiente;
-import src.Solicitud;
-import src.*;
+import app.*;
+import publicacionesYBusquedas.Calendario;
+import publicacionesYBusquedas.Publicacion;
+import solicitud.EstadoDeSolicitudDeReservaPendiente;
+import solicitud.Solicitud;
 
 class EstadoDeSolicitudDeReservaPendienteTest {
 

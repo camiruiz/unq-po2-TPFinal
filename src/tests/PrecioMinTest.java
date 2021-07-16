@@ -10,8 +10,8 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.PrecioMin;
-import src.Publicacion;
+import filtros.PrecioMin;
+import publicacionesYBusquedas.Publicacion;
 
 class PrecioMinTest {
 	

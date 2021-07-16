@@ -10,8 +10,8 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.Ciudad;
-import src.Publicacion;
+import filtros.Ciudad;
+import publicacionesYBusquedas.Publicacion;
 
 class CiudadTest {
 	

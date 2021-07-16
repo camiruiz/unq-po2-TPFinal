@@ -11,9 +11,9 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.CancelacionIntermedia;
-import src.EstadoGratuito;
-import src.Reserva;
+import politicasDeCancelacion.CancelacionIntermedia;
+import politicasDeCancelacion.EstadoGratuito;
+import publicacionesYBusquedas.Reserva;
 
 class EstadoGratuitoTest {
 	private Reserva reserva1;

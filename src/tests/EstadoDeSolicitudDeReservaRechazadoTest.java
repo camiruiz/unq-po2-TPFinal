@@ -10,8 +10,8 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.EstadoDeSolicitudDeReservaRechazado;
-import src.Solicitud;
+import solicitud.EstadoDeSolicitudDeReservaRechazado;
+import solicitud.Solicitud;
 
 class EstadoDeSolicitudDeReservaRechazadoTest {
 

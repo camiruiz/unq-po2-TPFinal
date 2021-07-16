@@ -7,9 +7,10 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.Publicacion;
-import src.*;
-import src.UsuarioInquilino;
+import app.*;
+import publicacionesYBusquedas.Publicacion;
+import solicitud.Solicitud;
+import usuarios.UsuarioInquilino;
 
 class SolicitudTest {
 

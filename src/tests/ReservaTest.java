@@ -9,8 +9,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.Reserva;
-import src.UsuarioInquilino;
+import publicacionesYBusquedas.Reserva;
+import usuarios.UsuarioInquilino;
 
 class ReservaTest {
 	

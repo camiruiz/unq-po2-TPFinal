@@ -7,10 +7,11 @@ import static org.mockito.Mockito.when;
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.BeforeEach;
-import src.*;
 import org.junit.jupiter.api.Test;
 
-import src.Reserva;
+import app.*;
+import politicasDeCancelacion.EstadoGratuito;
+import publicacionesYBusquedas.Reserva;
 
 class EstadoDeCancelacionIntermediaTest {
 

@@ -9,11 +9,12 @@ import java.util.stream.Collectors;
 public class GestorDePublicaciones {
 
 	private List<Publicacion> publicaciones;	
-	
+	private Busqueda busqueda;
 	
 	public GestorDePublicaciones(){
 		super();
 		this.publicaciones = new ArrayList<Publicacion>();
+		busqueda = new Busqueda();
 	}
 		
 	
@@ -165,7 +166,10 @@ public class GestorDePublicaciones {
 
 
 	
-	
+	public List<Publicacion> buscarPublicaciones(List<Filtro> filtros){
+		filtros.stream().forEach(filtro -> busqueda.setFiltro(filtro));
+		return this.busqueda.buscar(this.publicaciones);
+	}
 	
 	
 	

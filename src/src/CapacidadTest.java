@@ -12,10 +12,12 @@ import org.junit.jupiter.api.Test;
 
 class CapacidadTest {
 	
-	private List<Publicacion> publicaciones;
-	private Publicacion publicacion1;
-	private Publicacion publicacion2;
-	private Capacidad capacidad;
+	List<Publicacion> publicaciones;
+	Publicacion publicacion1;
+	Publicacion publicacion2;
+	Capacidad capacidad;
+	Ciudad ciudad;
+	Capacidad capacidad2;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -24,6 +26,8 @@ class CapacidadTest {
 	publicacion1 = mock(Publicacion.class);
 	publicacion2 = mock(Publicacion.class);
 	capacidad = new Capacidad(10);
+	capacidad2 = new Capacidad(41);
+	ciudad 		= new Ciudad();
 	
 	}
 	
@@ -43,9 +47,26 @@ class CapacidadTest {
 		
 		assertTrue(capacidad.filtrar(publicaciones).contains(publicacion1));
 		assertFalse(capacidad.filtrar(publicaciones).contains(publicacion2));
- 	
-
+	
+	}
+	
+	@Test
+	void test002UnFiltroSabeSuTipo() {
+		
+		String miTipo = "Capacidad";
+		
+		
+		assertEquals(capacidad.getTipo(), miTipo);
+	}
+	
+	@Test
+	void test003UnFiltroSabeCompararse() {
+		
+		assertFalse(capacidad.equals(ciudad));
+		assertTrue(capacidad.equals(capacidad2));
 		
 	}
+	
+	
 
 }

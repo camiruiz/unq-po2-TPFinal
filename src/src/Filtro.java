@@ -16,9 +16,9 @@ public abstract class Filtro {
 		this.tipo = tipo;
 	}
 	
-	@Override
-	public boolean equals(Object o){
-		return o.getClass() == this.getClass();
+	
+	public boolean equals(Filtro f){
+		return f.getTipo() == this.getTipo();
 	}
 
 }

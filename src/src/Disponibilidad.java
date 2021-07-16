@@ -7,18 +7,25 @@ import java.util.stream.Collectors;
 
 public class Disponibilidad extends Filtro {
 
-	private LocalDate fechaInicio;
-	private LocalDate fechaFin;
+	private LocalDate fechaEntrada;
+	private LocalDate fechaSalida;
 	static String tipo = "Disponibilidad";
 	
-	public Disponibilidad(LocalDate fechaInicio, LocalDate fechaFin) {
+	
+	
+	public Disponibilidad(LocalDate miFechaEntrada, LocalDate miFechaSalida) {
 		this.setTipo(tipo);
-		this.fechaFin = fechaFin;
-		this.fechaInicio = fechaInicio;
+		this.fechaSalida = miFechaSalida;
+		this.fechaEntrada = miFechaEntrada;
 	}
+	
+	public Disponibilidad() {
+		this.setTipo(tipo);
+	}
+	
 	@Override
 	public List<Publicacion> filtrar(List<Publicacion> publicaciones) {
-		return (publicaciones.stream().filter(p -> p.checkDisponibilidadEntre(fechaInicio,fechaFin))).collect(Collectors.toList());
+		return (publicaciones.stream().filter(p -> p.checkDisponibilidadEntre(fechaEntrada, fechaSalida))).collect(Collectors.toList());
 	}
 
 }

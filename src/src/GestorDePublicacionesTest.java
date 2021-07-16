@@ -192,37 +192,6 @@ class GestorDePublicacionesTest {
 		
 	}
 	
-	/*
-	@Test
-	void test005ElGestorDePublicacionesSabeElTop10DeUsuarios() {
-		
-		when(p1.getReservas()).thenReturn(listaDeReservas);
-		when(r1.compararInquilino(usuario1)).thenReturn(true);
-		when(r1.compararInquilino(usuario1)).thenReturn(false);
-		
-		listaDeReservas.add(r1);
-		listaDeReservas.add(r1);
-		listaDeReservas.add(r1);
-		listaDeReservas.add(r1);
-		listaDeReservas.add(r1);
-		listaDeReservas.add(r1);
-		listaDeReservas.add(r1);
-		listaDeReservas.add(r1);
-		listaDeReservas.add(r1);
-		listaDeReservas.add(r1);
-		listaDeReservas.add(r1);
-		listaDeReservas.add(r1);
-		listaDeReservas.add(r1);
-		listaDeReservas.add(r1);
-		listaDeReservas.add(r1);
-		listaDeReservas.add(r1);
-		listaDeReservas.add(r1);
-		listaDeReservas.add(r1);
-		listaDeReservas.add(r1);
-		listaDeReservas.add(r1);
-	
-		
-	}*/
 
 	@Test
 	void test006ElGestorDePublicacionesSabeSiUnaPublicacionEstaLibre() {
@@ -483,11 +452,6 @@ class GestorDePublicacionesTest {
 		
 		assertEquals(GP.getVecesQueAlquiloTodosSusInmuebles(propietario1), 4);
 		
-	}
-		
-
-	
-	
-		
+	}		
 	
 }

@@ -14,6 +14,10 @@ public class Ciudad extends Filtro {
 		this.ciudad = ciudad;
 	}
 	
+	public Ciudad( ) {
+		this.setTipo(tipo);
+	}
+	
 	@Override
 	public List<Publicacion> filtrar(List<Publicacion> publicaciones) {
 		return (publicaciones.stream().filter(p -> p.getCiudad().equals(this.ciudad))).collect(Collectors.toList());
